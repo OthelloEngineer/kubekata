@@ -1,5 +1,4 @@
 <script>
-    import "@xyflow/svelte/dist/style.css";
     import "../../app.css";
 </script>
 
@@ -8,10 +7,6 @@
 </div>
 
 <style lang="postcss">
-    :global(html) {
-        font-family: "Inter", sans-serif;
-    }
-
     :root {
         --edge-stroke-default: #ff6347; /* Changing edge stroke color to tomato red */
     }

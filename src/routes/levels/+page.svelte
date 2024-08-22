@@ -2,10 +2,15 @@
     import { IconSolid } from "flowbite-svelte-icons";
     import LevelButton from "./LevelButton.svelte";
     import DownSwoopRight from "$lib/components/downSwoopRight.svelte";
-    let levels = ["Beginner", "Intermediate", "Advanced"];
+    let levels = ["what-is-a-pod", "Intermediate", "Advanced"];
 </script>
 
-<div class="flex flex-col">
+<div>
+    <button> reset progress </button>
+    |
+    <button> delete all kata resources </button>
+</div>
+<div class="flex flex-col p-9">
     {#each levels as level, i}
         <LevelButton name={level} isCompleted={true} />
         {#if i % 2 === 0}

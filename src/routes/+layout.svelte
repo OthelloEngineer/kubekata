@@ -7,10 +7,6 @@
 </div>
 
 <style lang="postcss">
-    :global(html) {
-        font-family: "Inter", sans-serif;
-    }
-
     .animated-background {
         @apply bg-gradient-to-b from-blue-800 via-blue-500 to-blue-800;
         background-size: 120% 120%;

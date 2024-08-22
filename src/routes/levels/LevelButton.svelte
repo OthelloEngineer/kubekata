@@ -6,8 +6,9 @@
     }
 </script>
 
-<button
+<a
     class="{getButtonColor()} hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-300 ease-in-out max-w-min"
+    href="/levels/{name}"
 >
     <p class="text-justify">{name}</p>
-</button>
+</a>

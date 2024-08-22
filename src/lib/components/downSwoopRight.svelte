@@ -20,7 +20,7 @@
         fill="none"
         stroke-linecap="round"
         stroke-linejoin="round"
-        transform="matrix(0.7071067811865476,0.7071067811865475,-0.7071067811865475,0.7071067811865476,386.99999999999994,-178.68542494923804)"
+        transform="matrix(0.70,0.70,-0.70,0.70,380,-180)"
         ><path
             d={orientation_map.get(orientation)}
             marker-end="url(#SvgjsMarker3507)"
@@ -34,7 +34,7 @@
             viewBox="0 0 8 8"
             orient="auto"
             id="SvgjsMarker3507"
-            ><polygon points="0,8 2.6666666666666665,4 0,0 8,4" fill="#ffffff"
+            ><polygon points="0,8 2.5,4 0,0 8,5" fill="#ffffff"
             ></polygon></marker
         ></defs
     ></svg
