@@ -6,6 +6,7 @@
     import InfoBox from "./InfoBox.svelte";
     import DesiredCluster from "./DesiredCluster.svelte";
     import levelExample from "../levels-example.json";
+    import IntraClusterShell from "./IntraClusterShell.svelte";
     let name = $page.params.slug;
     let levels = levelExample.flatMap((level) => level.levels);
     console.log(levels);
@@ -19,7 +20,7 @@
 
 <button> reset level </button>
 
-<div class="flex">
+<div class="flex flex-wrap">
     <div class="mx-6">
         <InfoBox
             levelTitle={name.replaceAll("-", " ")}
@@ -32,4 +33,5 @@
     <ClusterInfoBox />
     <DesiredCluster />
     <GuidanceBox />
+    <IntraClusterShell />
 </div>
