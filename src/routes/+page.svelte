@@ -2,15 +2,20 @@
     import levels from "$lib/icons/levels.png";
     import docker from "$lib/icons/docker-mark-white.png";
     import kubernetes from "$lib/icons/kubernetes.png";
+    import kubecuddle from "$lib/icons/kubecuddle.png";
     import { Hr, P, Button } from "flowbite-svelte";
     import { ArrowRightOutline } from "flowbite-svelte-icons";
+    import CuddleBubble from "$lib/components/CuddleBubble.svelte";
 </script>
 
 <div class="h-full flex flex-col justify-center items-center space-y-10">
     <div />
+    <div class="flex flex-row animate-bounce w-max space-x-4">
+        <img src={kubecuddle} alt="KubeCuddle" class="w-32" />
+        <CuddleBubble message="Let's learn kubernetes together!!!" />
+    </div>
     <P class="text-6xl font-bold text-slate-300 ">Kube Kata</P>
     <Hr classHr="w-48 h-1 mx-auto my-4 rounded md:my-10" />
-
     <P class="text-3xl font-bold text-description">
         Your level-based on-boarding guide to Kubernetes
     </P>

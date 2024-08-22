@@ -16,6 +16,8 @@ const config = {
     extend: {
       colors: {
         description: "rgba(15, 48, 116, 1)",
+        navBar: "rgba(18, 55, 134, 1)",
+        opacity: "rgba(0, 0, 0, 0)",
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",
         ring: "hsl(var(--ring) / <alpha-value>)",

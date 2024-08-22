@@ -1,5 +1,0 @@
-{
-  "title": "What is a pod",
-  "description": "A pod is a group of one or more containers, with shared storage/network, and a specification for how to run the containers. A pod's contents are always co-located and co-scheduled, and run in a shared context. A pod models an application-specific 'logical host' - it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.",
-  "goal": "The goal of this lab is to understand what a pod is and how it is used in Kubernetes. Create a pod with the image 'nginx' and expose it on port 80."
-}
