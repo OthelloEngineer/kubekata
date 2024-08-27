@@ -1,7 +1,7 @@
 <script lang="ts">
     import { IconSolid } from "flowbite-svelte-icons";
     import LevelButton from "./LevelButton.svelte";
-    import DownSwoopRight from "$lib/components/downSwoopRight.svelte";
+    import DownSwoop from "$lib/components/downSwoop.svelte";
     import kubecuddle from "$lib/icons/kubecuddle.png";
     import levelExample from "./levels-example.json";
     import Levels from "../../levels.svelte";
@@ -37,9 +37,9 @@
                 {#each superLevel.levels as level, i}
                     <LevelButton name={level.title} isCompleted={true} />
                     {#if i % 2 === 0}
-                        <DownSwoopRight orientation="right" />
+                        <DownSwoop orientation="right" />
                     {:else}
-                        <DownSwoopRight orientation="left" />
+                        <DownSwoop orientation="left" />
                     {/if}
                 {/each}
             </div>
