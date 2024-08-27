@@ -33,7 +33,7 @@
             class="bg-green-200 bg-opacity-30 outline-3 outline-dashed outline-offset-2 outline-white w-fit rounded-md"
         >
             <div class="flex flex-col place-items-center">
-                <h1 class="text-2xl">{superLevel.superLevel}</h1>
+                <h1 class="text-2xl">{superLevel.name}</h1>
                 {#each superLevel.levels as level, i}
                     <LevelButton name={level.title} isCompleted={true} />
                     {#if i % 2 === 0}
