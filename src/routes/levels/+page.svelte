@@ -10,42 +10,44 @@
     let height = 20;
 </script>
 
-<div
-    class="flex flex-row h-{height} bg-gradient-to-b from-navBar via-90% via-navBar to-opacity"
+<nav
+    class="
+        py-2 px-8 h-{height}
+        flex flex-row justify-between items-center
+        text-white
+        bg-gradient-to-b
+        from-navBar via-navBar via-90% to-opacity
+    "
 >
-    <div
-        class=" flex flex-row w-1/6 h-{height} space-x-8 justify-center items-center"
-    >
-        <button class="h-max text-white outline-1"> reset progress </button>
-
-        <button class="text-white"> delete all kata resources </button>
+    <h1 class="text-4xl">Levels</h1>
+    <div class="flex flex-row-reverse h-full">
+        <img class="object-contain" src={kubecuddle} alt="KubeCuddleFish" />
     </div>
-    <div class="w-2/3 flex flex-row justify-center items-center">
-        <h1 class="text-4xl text-white">Levels</h1>
+    <div class="flex flex-row space-x-8 items-center">
+        <button> reset progress </button>
+        <button> delete all kata resources </button>
     </div>
-    <div class="w-1/6 flex flex-row-reverse">
-        <img src={kubecuddle} alt="KubeCuddleFish" />
-    </div>
-</div>
-<div class="flex flex-row p-9 space-x-5">
+</nav>
+<main class="flex flex-row p-9 space-x-5">
     {#each levelExample as superLevel}
         <div
             class="bg-green-200 bg-opacity-30 outline-3 outline-dashed outline-offset-2 outline-white w-fit rounded-md"
         >
-            <div class="flex flex-col place-items-center">
-                <h1 class="text-2xl">{superLevel.superLevel}</h1>
+            <div class="p-2 w-full border-b-2">
+                <h1 class="text-white text-center text-2xl font-bold">{superLevel.superLevel}</h1>
+            </div>
+            <div class="p-6 flex flex-col items-center">
                 {#each superLevel.levels as level, i}
-                    <LevelButton name={level.title} isCompleted={true} />
-                    {#if i % 2 === 0}
-                        <DownSwoopRight orientation="right" />
-                    {:else}
-                        <DownSwoopRight orientation="left" />
+                    {#if i !== 0}
+                        {#if i % 2 === 0}
+                            <DownSwoopRight orientation="left" />
+                        {:else}
+                            <DownSwoopRight orientation="right" />
+                        {/if}
                     {/if}
+                    <LevelButton name={level.title} isCompleted={true} />
                 {/each}
             </div>
         </div>
     {/each}
-</div>
-
-<style>
-</style>
+</main>
