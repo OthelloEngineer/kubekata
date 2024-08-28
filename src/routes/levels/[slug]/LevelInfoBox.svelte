@@ -1,5 +1,34 @@
-<script>
+<script lang="ts">
+    import higlightedWords from "./highlighted-words.json";
     export let goal = "default goal";
+    let preprocessedGoal = highlightWords(goal);
+
+    function highlightWords(goal: string) {
+        const words = goal.split(" ");
+        let nextWordIsToken = false;
+        const highlights = words.map((word) => {
+            const matchedHighlight = higlightedWords.find((highlight) => {
+                highlight = highlight.split(" ")[0];
+                return highlight === word;
+            });
+            if (nextWordIsToken) {
+                nextWordIsToken = false;
+                return `<span class="text-green-500">${word}</span>`;
+            }
+            if (
+                matchedHighlight !== undefined &&
+                matchedHighlight.includes("$")
+            ) {
+                nextWordIsToken = true;
+                return `<span class="text-red-500">${word}</span>`;
+            }
+            if (matchedHighlight) {
+                return `<span class="text-yellow-500">${word}</span>`;
+            }
+            return word;
+        });
+        return highlights.join(" ");
+    }
 </script>
 
 <div class="max-w-md">
@@ -8,7 +37,7 @@
     >
         Goal
     </h5>
-    <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
-        {goal}
+    <p class="mb-3 font-normal text-black dark:text-gray-400">
+        {@html preprocessedGoal}
     </p>
 </div>

@@ -38,7 +38,6 @@
                     {:else}
                         <DownSwoop orientation="left" />
                     {/if}
-                    <LevelButton name={level.title} isCompleted={true} />
                 {/each}
             </div>
         </div>
