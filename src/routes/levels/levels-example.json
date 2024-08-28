@@ -1,6 +1,6 @@
 [
   {
-    "superLevel": "deployment",
+    "name": "deployment",
     "levels": [
       {
         "title": "What-is-a-pod",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "superLevel": "service",
+    "name": "service",
     "levels": [
       {
         "title": "What is a service",

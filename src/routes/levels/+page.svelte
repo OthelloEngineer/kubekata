@@ -33,10 +33,8 @@
         <div
             class="bg-green-200 bg-opacity-30 outline-3 outline-dashed outline-offset-2 outline-white w-fit rounded-md"
         >
-            <div class="p-2 w-full border-b-2">
-                <h1 class="text-white text-center text-2xl font-bold">{superLevel.superLevel}</h1>
-            </div>
-            <div class="p-6 flex flex-col items-center">
+            <div class="flex flex-col place-items-center">
+                <h1 class="text-2xl">{superLevel.name}</h1>
                 {#each superLevel.levels as level, i}
                     {#if i !== 0}
                         {#if i % 2 === 0}
