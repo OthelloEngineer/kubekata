@@ -1,12 +1,8 @@
 <script lang="ts">
-    import { IconSolid } from "flowbite-svelte-icons";
     import LevelButton from "./LevelButton.svelte";
     import DownSwoop from "$lib/components/downSwoop.svelte";
     import kubecuddle from "$lib/icons/kubecuddle.png";
     import levelExample from "./levels-example.json";
-    import Levels from "../../levels.svelte";
-    let levels = ["what-is-a-pod", "Intermediate", "Advanced"];
-    console.log(levelExample);
     let height = 20;
 </script>
 
