@@ -38,8 +38,11 @@
     <div>
         <LevelInfoBox {goal} />
     </div>
-    <GuidanceBox />
-    <ClusterInfoBox />
-    <DesiredCluster />
-    <IntraClusterShell />
+    <div class="ml-auto mx-4">
+        <GuidanceBox />
+    </div>
 </div>
+
+<ClusterInfoBox />
+<DesiredCluster />
+<IntraClusterShell />
