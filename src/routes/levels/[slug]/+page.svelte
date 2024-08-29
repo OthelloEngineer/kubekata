@@ -1,9 +1,9 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import ClusterInfoBox from "./ClusterInfoBox.svelte";
-    import GuidanceBox from "./GuidanceBox.svelte";
-    import LevelInfoBox from "./LevelInfoBox.svelte";
-    import InfoBox from "./InfoBox.svelte";
+    import ClusterInfo from "./ClusterInfo.svelte";
+    import Guidance from "./Guidance.svelte";
+    import Goal from "./Goal.svelte";
+    import Info from "./Info.svelte";
     import DesiredCluster from "./DesiredCluster.svelte";
     import levelExample from "../levels-example.json";
     import IntraClusterShell from "./IntraClusterShell.svelte";
@@ -52,10 +52,10 @@
 </nav>
 <div class="flex">
     <div class="mx-6">
-        <InfoBox levelDescription={description} />
+        <Info levelDescription={description} />
     </div>
     <div>
-        <LevelInfoBox {goal} />
+        <Goal {goal} />
     </div>
     <div
         class="w-2/5 outline outline-1 outline-white mx-6 bg-white bg-opacity-20"
@@ -63,10 +63,10 @@
         <CutePicture svgName={picture} />
     </div>
     <div class="ml-auto mx-4">
-        <GuidanceBox {hint} />
+        <Guidance {hint} />
     </div>
 </div>
 
-<ClusterInfoBox />
+<ClusterInfo />
 <DesiredCluster />
 <IntraClusterShell />
