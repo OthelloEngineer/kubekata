@@ -4,8 +4,10 @@
     "levels": [
       {
         "title": "What-is-a-pod",
+        "picture": "https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg",
         "description": "A pod is a group of one or more containers, with shared storage/network, and a specification for how to run the containers. A pod's contents are always co-located and co-scheduled, and run in a shared context. A pod models an application-specific 'logical host' - it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.",
-        "goal": "The goal of this lab is to understand what a pod is and how it is used in Kubernetes. Create a pod with the image 'nginx' and expose it on port 80."
+        "goal": "The goal of this lab is to understand what a pod is and how it is used in Kubernetes. Create a pod with the image 'nginx' and expose it on port 80. Then try to use the Intra-Cluster Shell to 'curl' the container port 80 there the pod is exposed on. To create a pod, you can use the command 'kubectl run nginx --image=nginx --port=80'.",
+        "hint": "You can get the IP of the pod by running 'kubectl get pods -o wide'."
       },
       {
         "title": "Configure a pod",

@@ -1,6 +1,8 @@
 <script lang="ts">
     import kubecuddle from "$lib/icons/kubecuddle.png";
-    let hint = "You can do this, I believe in you!";
+    export let hint = "oh no, you're stuck!";
+    let beforeHint =
+        "You can do this, I believe in you! Press on the lightbulb to get a hint if you're stuck!";
     let fill = "#000000";
     let selected = false;
 </script>
@@ -21,9 +23,10 @@
         </div>
         <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
             {#if selected}
-                hint:
+                {hint}
+            {:else}
+                {beforeHint}
             {/if}
-            {hint}
         </p>
         <button
             class="flex flex-row-reverse"

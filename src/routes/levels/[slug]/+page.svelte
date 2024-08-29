@@ -7,6 +7,7 @@
     import DesiredCluster from "./DesiredCluster.svelte";
     import levelExample from "../levels-example.json";
     import IntraClusterShell from "./IntraClusterShell.svelte";
+    import CutePicture from "./CutePicture.svelte";
     let name = $page.params.slug;
     let levels = levelExample.flatMap((level) => level.levels);
     console.log(levels);
@@ -16,30 +17,53 @@
         description = "default description";
     }
     let goal = level?.goal;
+    let picture =
+        "https://kubernetes.io/images/blog/2024-04-17-kubernetes-1.30-release/k8s-1.30.png";
+    if (level?.picture !== undefined) {
+        picture = level.picture;
+    }
+    let hint = level?.hint;
 </script>
 
-<div class="flex flex-wrap space-x-4 px-8 py-2">
-    <button
-        class="bg-blue-800 hover:bg-blue-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
-        >Back</button
-    >
-    <button
-        class="bg-red-800 hover:bg-red-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
-        >Reset</button
-    >
-</div>
-<div class="flex flex-wrap">
+<nav
+    class="
+        py-2 px-8 h-20
+        flex flex-row justify-between items-center
+        text-white
+        bg-gradient-to-b
+        from-navBar via-navBar via-90% to-opacity
+    "
+>
+    <div class="flex flex-wrap space-x-4 place-content-center justify-center">
+        <a
+            class="bg-blue-800 hover:bg-blue-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            href="/levels">Back</a
+        >
+        <button
+            class="bg-red-800 hover:bg-red-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            >Reset</button
+        >
+        <h5
+            class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white"
+        >
+            {name}
+        </h5>
+    </div>
+</nav>
+<div class="flex">
     <div class="mx-6">
-        <InfoBox
-            levelTitle={name.replaceAll("-", " ")}
-            levelDescription={description}
-        />
+        <InfoBox levelDescription={description} />
     </div>
     <div>
         <LevelInfoBox {goal} />
     </div>
+    <div
+        class="w-2/5 outline outline-1 outline-white mx-6 bg-white bg-opacity-20"
+    >
+        <CutePicture svgName={picture} />
+    </div>
     <div class="ml-auto mx-4">
-        <GuidanceBox />
+        <GuidanceBox {hint} />
     </div>
 </div>
 
