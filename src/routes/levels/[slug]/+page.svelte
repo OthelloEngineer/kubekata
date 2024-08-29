@@ -30,8 +30,8 @@
     <div>
         <LevelInfoBox {goal} />
     </div>
+    <GuidanceBox />
     <ClusterInfoBox />
     <DesiredCluster />
-    <GuidanceBox />
     <IntraClusterShell />
 </div>
