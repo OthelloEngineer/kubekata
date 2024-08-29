@@ -10,4 +10,3 @@ text goes here
 - Create cluster manager
 - Create microservice ping-pong
 - Create persistent volume microservice
-- 
