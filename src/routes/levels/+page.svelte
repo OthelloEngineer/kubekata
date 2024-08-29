@@ -32,7 +32,7 @@
             <div class="flex flex-col place-items-center">
                 <h1 class="text-2xl">{superLevel.name}</h1>
                 {#each superLevel.levels as level, i}
-                    <LevelButton name={level.title} isCompleted={true} />
+                    <LevelButton name={level.title} isCompleted={false} />
                     {#if i % 2 === 0}
                         <DownSwoop orientation="right" />
                     {:else}
