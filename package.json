@@ -27,6 +27,7 @@
 	"type": "module",
 	"dependencies": {
 		"@xyflow/svelte": "^0.1.14",
+		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
 		"flowbite-svelte-icons": "^1.6.1",
 		"tailwind-merge": "^2.4.0",

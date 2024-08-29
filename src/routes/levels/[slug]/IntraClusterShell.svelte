@@ -32,7 +32,7 @@
             <div class="ml-2 h-3 w-3 bg-orange-300 rounded-full"></div>
             <div class="ml-2 h-3 w-3 bg-green-500 rounded-full"></div>
             <span class="tracking-widest px-5 justify-center text-green-400">
-                IntraClusterShell</span
+                Intra-Cluster Shell</span
             >
         </div>
         {#each previousCommands as command}
