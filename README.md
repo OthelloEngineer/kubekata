@@ -1,4 +1,4 @@
-# KubeKata - Your level-based kuberentes onboarding guide
+# KubeKata - Your level-based kuberentes onboarding
 text goes here
 
 
