@@ -6,6 +6,8 @@
     import { Hr, P, Button } from "flowbite-svelte";
     import { ArrowRightOutline } from "flowbite-svelte-icons";
     import CuddleBubble from "$lib/components/CuddleBubble.svelte";
+
+    console.log("CURLPOD env: ", import.meta.env.CURLPOD);
 </script>
 
 <div class="h-full flex flex-col justify-center items-center space-y-10">
