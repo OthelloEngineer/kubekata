@@ -13,7 +13,7 @@
         Info
     </h5>
     <p class="mb-3 font-normal text-white dark:text-gray-400">
-        {levelDescription}
+        {@html levelDescription}
     </p>
 </div>
 

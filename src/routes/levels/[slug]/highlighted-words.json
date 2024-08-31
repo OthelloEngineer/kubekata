@@ -1,1 +1,1 @@
-["pod", "deployment", "port $", "image $"]
+["pod", "pods", "deployment", "curl", "port $", "image $", "code|kubectl#run#nginx#--image=nginx#--port=80"]
