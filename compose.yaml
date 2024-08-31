@@ -1,0 +1,11 @@
+services:
+  frontend:
+    image: othelloengineer/kubekata-level-frontend:0.0.28
+    ports:
+      - "8080:5173"
+    environment:
+      - CURLPOD=curlpod:8080
+  curlpod:
+    image: othelloengineer/curl-pod:0.0.7
+    ports:
+      - "8081:8080"

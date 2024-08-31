@@ -1,6 +1,5 @@
 <script lang="ts">
     import CommandSpinner from "$lib/components/CommandSpinner.svelte";
-
     interface Command {
         command: string;
         output: string;
@@ -12,8 +11,19 @@
             previousCommands = [];
             return "";
         }
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        return "output of the command";
+        console.log("executing command: ", command);
+        let url = `/api?url=${encodeURIComponent(command)}`;
+        console.log("url: ", url);
+        const out = await await fetch(url, {
+            method: 'GET',
+        })
+            .then((res) => res.text())
+            .then((data) => {
+                console.log("data: ", data);
+                data = data.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                return data;
+        })
+        return out;
     }
 
     let isLoading = false;
@@ -41,7 +51,7 @@
                 <span class="text-gray-100">{command.command}</span>
             </div>
             <div class="flex flex-row">
-                <span class="text-gray-100">{command.output}</span>
+                <span class="text-gray-100">{@html command.output}</span>
             </div>
         {/each}
 
