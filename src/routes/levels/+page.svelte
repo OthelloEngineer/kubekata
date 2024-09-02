@@ -4,6 +4,20 @@
     import kubecuddle from "$lib/icons/kubecuddle.png";
     import levelExample from "./levels-example.json";
     let height = 20;
+    let files: FileList;
+
+    function print_file() {
+        let config = files[0].text().then((text) => {
+            let url = "/api"
+            console.log("text: ", text.toString())
+            fetch(url, {
+                method: 'POST',
+                body: text.toString(),
+                headers: {
+                }
+            })
+        })
+    }
 </script>
 
 <nav
@@ -13,11 +27,21 @@
         text-white
         bg-gradient-to-b
         from-navBar via-navBar via-90% to-opacity
-    "
+   "
 >
     <h1 class="text-4xl">Levels</h1>
     <div class="flex flex-row-reverse h-full">
         <img class="object-contain" src={kubecuddle} alt="KubeCuddleFish" />
+    </div>
+    <div> 
+    <span> upload your kube "config" file </span>
+
+
+    {#if files !== undefined}
+        <button on:click={print_file}> confirm upload </button>
+    {:else }
+        <input bind:files type="file"  />
+    {/if}
     </div>
     <div class="flex flex-row space-x-8 items-center">
         <button> reset progress </button>

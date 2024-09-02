@@ -1,5 +1,7 @@
 FROM node:21-alpine
 
+RUN mkdir ~/.kube
+
 WORKDIR /app
 
 COPY package*.json .

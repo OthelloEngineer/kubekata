@@ -1,4 +1,4 @@
-import process from "process";
+import fs from 'fs';
 
 export async function GET({ url }) {
     let curlpod_url = process.env.CURLPOD || 'http://curlpod:8080';
@@ -43,4 +43,12 @@ export async function GET({ url }) {
         console.error("Fetch encountered an error:", error);
         return new Response(JSON.stringify({ error: 'Server Error', details: error.message }), { status: 500 });
     }
+}
+
+export async function POST({ request }) {
+    const config = await request.text();
+    console.log("Received kubeconfig:", config);
+    
+    fs.writeFileSync('./config-test', config);
+    return new Response(JSON.stringify({ message: 'Kubeconfig updated' }), { status: 200 });
 }
