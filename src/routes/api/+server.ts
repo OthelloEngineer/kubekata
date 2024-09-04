@@ -48,7 +48,20 @@ export async function GET({ url }) {
 export async function POST({ request }) {
     const config = await request.text();
     console.log("Received kubeconfig:", config);
-    
     fs.writeFileSync('./config-test', config);
-    return new Response(JSON.stringify({ message: 'Kubeconfig updated' }), { status: 200 });
+    try {
+        fetch('http://cluster-observer:8081/upload',
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: config
+            });
+        return new Response(JSON.stringify({ status: 'OK' }), { status: 200 });
+    }
+    catch (error) {
+        console.error("Fetch encountered an error:", error);
+        return new Response(JSON.stringify({ error: 'Server Error', details: error.message }), { status: 500 });
+}
 }
