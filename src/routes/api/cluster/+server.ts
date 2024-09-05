@@ -1,9 +1,9 @@
 const getMap = new Map<string, (url: string) => Promise<any>>();
-getMap.set("/clusterState", getClusterState);
-getMap.set("/desiredState", getDesiredState);
-getMap.set("/diff", getDiff);
+getMap.set("clusterState", getClusterState);
+getMap.set("desiredState", getDesiredState);
+getMap.set("diff", getDiff);
 
-export default async function GET({ url }) {
+export async function GET({ url }) {
   let observerUrl = "http://cluster-observer:8080";
 
   // Get the 'url' parameter from the query string
@@ -21,7 +21,8 @@ export default async function GET({ url }) {
         status: 400,
       });
     }
-    return await pathFunction(observerUrl);
+    const result = await pathFunction(observerUrl);
+    return new Response(JSON.stringify(result), { status: 200 });
   } catch (error) {
     console.error("Fetch encountered an error:", error);
     return new Response(

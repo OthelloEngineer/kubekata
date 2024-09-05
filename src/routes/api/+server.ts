@@ -1,8 +1,12 @@
 import fs from "fs";
+const getMap = new Map<string, (url: string) => Promise<any>>();
+getMap.set("/clusterState", getClusterState);
+getMap.set("/desiredState", getDesiredState);
+getMap.set("/diff", getDiff);
 
 export async function GET({ url }) {
   let curlpod_url = "http://curlpod:8080"; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
-
+  console.log("Curlpod URL: ", curlpod_url);
   let request = url.searchParams.get("url");
   if (!request) {
     return new Response(JSON.stringify({ error: "URL parameter is missing" }), {
@@ -55,7 +59,7 @@ export async function POST({ request }: any) {
   const config = await request.text();
   console.log("Received kubeconfig:", getNamespaceAndServerFromConfig(config));
   try {
-    fetch("http://cluster-observer:8081/upload", {
+    fetch("http://cluster-observer:8080/upload", {
       method: "POST",
       headers: {
         "Content-Type": "text/plain",
@@ -87,3 +91,9 @@ function getNamespaceAndServerFromConfig(config: String) {
 
   return { server, namespace };
 }
+
+async function getClusterState(url: string) {}
+
+async function getDesiredState(url: string): Promise<any> {}
+
+async function getDiff(url: string): Promise<any> {}

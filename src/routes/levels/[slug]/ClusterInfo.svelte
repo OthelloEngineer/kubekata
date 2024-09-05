@@ -1,18 +1,29 @@
 <script lang="ts">
-    let clusterState = JSON.parse('"no": "data"');
+    import { browser } from "$app/environment";
+    let clusterState = JSON.parse('{"no":"data"}');
+    let polling: NodeJS.Timeout;
+    const setupPoller = () => {
+        if (polling) {
+            clearInterval(polling);
+        }
+        polling = setInterval(doFetch, 1000);
+    };
 
-    while (true) {
-        async () => {
-            const res = await fetch("/api/cluster?url=clusterState", {
+    const doFetch = async () => {
+        if (browser) {
+            const url = `/api/cluster?url=clusterState`;
+            const res = await fetch(url, {
                 method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }).then((res) => res.json());
-            clusterState = res;
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log("data: ", data);
+                    clusterState = JSON.stringify(data);
+                });
             await new Promise((r) => setTimeout(r, 1000));
-        };
-    }
+        }
+    };
+    $: setupPoller();
 </script>
 
 <div

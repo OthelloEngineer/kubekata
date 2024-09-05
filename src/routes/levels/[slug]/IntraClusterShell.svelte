@@ -14,15 +14,15 @@
         console.log("executing command: ", command);
         let url = `/api?url=${encodeURIComponent(command)}`;
         console.log("url: ", url);
-        const out = await await fetch(url, {
-            method: 'GET',
+        const out = await fetch(url, {
+            method: "GET",
         })
             .then((res) => res.text())
             .then((data) => {
                 console.log("data: ", data);
-                data = data.replace(/(?:\r\n|\r|\n)/g, '<br>');
+                data = data.replace(/(?:\r\n|\r|\n)/g, "<br>");
                 return data;
-        })
+            });
         return out;
     }
 
