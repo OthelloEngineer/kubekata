@@ -4,6 +4,8 @@
     function getButtonColor() {
         return isCompleted ? "bg-green-500" : "bg-blue-500";
     }
+    export let goal = "default goal";
+    export let description = "default description";
 </script>
 
 <a
