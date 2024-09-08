@@ -1,6 +1,6 @@
 const getMap = new Map<string, (url: string) => Promise<any>>();
 getMap.set("clusterState", getClusterState);
-getMap.set("desiredState", getDesiredState);
+getMap.set("desired", getDesiredState);
 getMap.set("diff", getDiff);
 
 export async function GET({ url }) {
@@ -39,7 +39,7 @@ async function getClusterState(url: string) {
 }
 
 async function getDesiredState(url: string): Promise<any> {
-  let response = await fetch(`${url}/desiredState`);
+  let response = await fetch(`${url}/desired`);
   let json = await response.json();
   return json;
 }
