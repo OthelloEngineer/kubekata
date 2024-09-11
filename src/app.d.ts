@@ -7,7 +7,10 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+		const isMock: boolean = true;
 	}
 }
 
-export {};
+export {
+	App
+};

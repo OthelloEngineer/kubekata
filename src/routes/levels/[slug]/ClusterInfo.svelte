@@ -2,8 +2,10 @@
     import { browser } from "$app/environment";
     import DeploymentBox from "$lib/components/DeploymentBox.svelte";
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
+    import cluster from "cluster";
     $: clusterState = getDefaultCluster();
     let polling: NodeJS.Timeout;
+    let FORCE_RERENDER = 0;
     const setupPoller = () => {
         if (polling) {
             clearInterval(polling);
@@ -20,8 +22,17 @@
                 .then((res) => res.json())
                 .then((data) => {
                     const ensureCluster = JSON.stringify(data);
-                    clusterState = JSON.parse(ensureCluster);
-                    console.log(clusterState);
+                    console.log("ensureCluster: ", ensureCluster);
+                    const parsedEnsureCluster: Cluster = JSON.parse(ensureCluster);
+                    if (parsedEnsureCluster.deployments === null) {
+                        parsedEnsureCluster.deployments = [];
+                    };
+                    clusterState = getDefaultCluster();
+                    clusterState = parsedEnsureCluster;
+                    clusterState = clusterState;
+                    clusterState.deployments = clusterState.deployments;
+                    FORCE_RERENDER++;
+                    console.log("info state: ", clusterState);
                 });
         }
     };
@@ -32,7 +43,10 @@
     class=" w-full p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 m-8 size-fit"
 >
     <h1>Current Cluster State</h1>
+    {#key FORCE_RERENDER}
+        
     {#each clusterState.deployments as deployment}
         <DeploymentBox {deployment} />
     {/each}
+    {/key}
 </div>

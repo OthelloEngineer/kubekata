@@ -7,42 +7,71 @@
         "picture": "https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg",
         "description": "A pod is a group of one or more containers, with shared storage/network, and a specification for how to run the containers. A pod's contents are always co-located and co-scheduled, and run in a shared context. A pod models an application-specific 'logical host' - it contains one or more application containers which are relatively tightly coupled. In non-cloud contexts, applications executed on the same physical or virtual machine are analogous to cloud applications executed on the same logical host.",
         "goal": "The goal of this lab is to understand what a pod is and how it is used in Kubernetes. Create a pod with the image 'nginx' and expose it on port 80. Then try to use the Intra-Cluster Shell to 'curl' the container port 80 there the pod is exposed on. To create a pod, you can use the command 'kubectl run nginx --image=nginx --port=80'.",
-        "hint": "You can get the IP of the pod by running 'kubectl get pods -o wide'."
+        "hint": "You can get the IP of the pod by running 'kubectl get pods -o wide'.",
+        "isCompleted": false,
+        "isQuestion": true
       },
       {
         "title": "Configure a pod",
         "description": "This level explains how to configure a pod by defining its specifications such as containers, storage, and network settings.",
-        "goal": "The goal of this lab is to configure a pod with specific requirements, including environment variables and resource limits."
+        "goal": "The goal of this lab is to configure a pod with specific requirements, including environment variables and resource limits.",
+        "isCompleted": false,
+        "isQuestion": false
+
       },
       {
         "title": "Access a pod",
         "description": "Learn how to access the containers running inside a pod using various methods such as kubectl exec, port forwarding, and service exposure.",
-        "goal": "The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster."
+        "goal": "The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Pod resources",
         "description": "Understand how to manage and monitor the resources used by pods, including CPU, memory, and storage.",
-        "goal": "The goal is to define and monitor resource requests and limits for pods to ensure efficient use of cluster resources."
+        "goal": "The goal is to define and monitor resource requests and limits for pods to ensure efficient use of cluster resources.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Labels",
         "description": "Learn about labeling resources in Kubernetes to organize and select subsets of objects.",
-        "goal": "The goal is to use labels and selectors to organize pods and other resources effectively."
+        "goal": "The goal is to use labels and selectors to organize pods and other resources effectively.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "ReplicaSet",
         "description": "A ReplicaSet ensures that a specified number of pod replicas are running at any given time.",
-        "goal": "The goal is to create a ReplicaSet that maintains a desired number of pod replicas and manages their lifecycle."
+        "goal": "The goal is to create a ReplicaSet that maintains a desired number of pod replicas and manages their lifecycle.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "The scary deployment",
         "description": "Explore advanced deployment strategies in Kubernetes, including canary releases and blue-green deployments.",
-        "goal": "The goal is to implement and manage complex deployment strategies in a Kubernetes cluster."
+        "goal": "The goal is to implement and manage complex deployment strategies in a Kubernetes cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "The not-so-scary deployment",
         "description": "Understand the basics of deploying applications in Kubernetes, focusing on simplicity and reliability.",
-        "goal": "The goal is to deploy a simple application using Kubernetes' deployment resources and manage its lifecycle."
+        "goal": "The goal is to deploy a simple application using Kubernetes' deployment resources and manage its lifecycle.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       }
     ]
   },
@@ -52,32 +81,54 @@
       {
         "title": "What is a service",
         "description": "A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy by which to access them.",
-        "goal": "The goal is to create a Kubernetes Service to expose a set of Pods, allowing them to be accessed from within and outside the cluster."
+        "goal": "The goal is to create a Kubernetes Service to expose a set of Pods, allowing them to be accessed from within and outside the cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Service types",
         "description": "Learn about the different types of Services in Kubernetes, including ClusterIP, NodePort, and LoadBalancer.",
-        "goal": "The goal is to create and understand the use cases for different Kubernetes Service types."
+        "goal": "The goal is to create and understand the use cases for different Kubernetes Service types.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Service discovery",
         "description": "Service discovery in Kubernetes involves finding and accessing Services within a cluster.",
-        "goal": "The goal is to configure service discovery mechanisms and access Services by name within a Kubernetes cluster."
+        "goal": "The goal is to configure service discovery mechanisms and access Services by name within a Kubernetes cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Service load balancing",
         "description": "Explore how Kubernetes Services distribute traffic across Pods using load balancing.",
-        "goal": "The goal is to implement and test load balancing for a Service in a Kubernetes cluster."
+        "goal": "The goal is to implement and test load balancing for a Service in a Kubernetes cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Service DNS",
         "description": "Kubernetes uses DNS to allow Services to be discovered by name, automatically creating DNS records for Services.",
-        "goal": "The goal is to configure and test DNS-based service discovery in a Kubernetes cluster."
+        "goal": "The goal is to configure and test DNS-based service discovery in a Kubernetes cluster.",
+        "isCompleted": false,
+        "isQuestion": false
+
+
       },
       {
         "title": "Service annotations",
         "description": "Annotations in Kubernetes provide a way to attach metadata to objects and are used for specific configuration purposes.",
-        "goal": "The goal is to apply annotations to Services to influence their behavior and integrate with external systems."
+        "goal": "The goal is to apply annotations to Services to influence their behavior and integrate with external systems.",
+        "isCompleted": false,
+        "isQuestion": false
       }
     ]
   }

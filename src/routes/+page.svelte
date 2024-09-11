@@ -1,4 +1,5 @@
 <script lang="ts">
+
     import levels from "$lib/icons/levels.png";
     import docker from "$lib/icons/docker-mark-white.png";
     import kubernetes from "$lib/icons/kubernetes.png";
@@ -7,10 +8,9 @@
     import { ArrowRightOutline } from "flowbite-svelte-icons";
     import CuddleBubble from "$lib/components/CuddleBubble.svelte";
 
-    console.log("CURLPOD env: ", import.meta.env.CURLPOD);
 </script>
 
-<div class="h-full flex flex-col justify-center items-center space-y-10">
+<div class="flex flex-col justify-center items-center space-y-10 h-screen">
     <div />
     <div class="flex flex-row animate-bounce w-max space-x-4">
         <img src={kubecuddle} alt="KubeCuddle" class="w-32" />

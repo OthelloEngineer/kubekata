@@ -12,6 +12,7 @@
     let levels = levelExample.flatMap((level) => level.levels);
     console.log(levels);
     let level = levels.find((level) => level.title === name);
+    let isComplete = level?.isCompleted;
     let description = level?.description;
     if (description === undefined) {
         description = "default description";
@@ -43,11 +44,18 @@
             class="bg-red-800 hover:bg-red-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
             >Reset</button
         >
+
         <h5
             class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white"
         >
             {name}
+            
         </h5>
+        {#if isComplete}
+            <h5 class="mb-2 text-2xl font-semibold tracking-tight text-green-500 dark:text-green-500">
+                Completed
+            </h5>
+        {/if}
     </div>
 </nav>
 <div class="flex">
@@ -62,11 +70,11 @@
     >
         <CutePicture svgName={picture} />
     </div>
-    <div class="ml-auto mx-4">
+    <div class="flex flex-col ml-auto mx-4">
         <Guidance {hint} />
     </div>
 </div>
 
 <ClusterInfo />
-<DesiredCluster />
+<DesiredCluster bind:isCompleted={isComplete} needsQuestion={level?.isQuestion} />
 <IntraClusterShell />

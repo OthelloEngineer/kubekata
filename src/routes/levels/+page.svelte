@@ -5,6 +5,7 @@
     import levelExample from "./levels-example.json";
     let height = 20;
     let files: FileList;
+    
 
     function print_file() {
         let config = files[0].text().then((text) => {

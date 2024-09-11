@@ -2,8 +2,13 @@
     import { type Deployment, type Pod } from "$lib/KubernetesTypes";
     export let deployment: Deployment;
     let pods: Pod[] = [];
+    console.log("RERENDERING DEPLOYMENT BOX");
     if (deployment.pods) {
         pods = deployment.pods;
+        console.log("logging pods: ", pods);
+    } else {
+        console.log("no pods");
+        deployment.pods = [];
     }
     let selectors: string[] = ["No selectors"];
     if (deployment.selector) {
@@ -35,11 +40,11 @@
         <span
             class="inline-block rounded-lg bg-purple-200 bg-opacity-40 p-1 text-center text-white"
         >
-            Nginx
+           deployment: {deployment.name} 
         </span>
         <div class="flex flex-col">
             <div class="flex flex-row space-x-2">
-                <span> {deployment.replicas}</span>
+                <span> n={deployment.replicas}</span>
                 <span>{deployment.strategyType}</span>
             </div>
             <span>{deployment.namespace}</span>
@@ -62,7 +67,6 @@
             class="flex size-fit flex-col space-y-1 rounded-sm bg-purple-200 bg-opacity-40 p-1"
         >
             <span> pods: </span>
-
             {#each pods as pod}
                 <span class="p-1 outline outline-1 outline-white">
                     {pod.name}
