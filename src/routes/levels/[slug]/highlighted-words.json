@@ -1,1 +1,1 @@
-["pod", "pods", "deployment", "curl", "port $", "image $", "code|kubectl#run#nginx#--image=nginx#--port=80"]
+["pod", "pods", "deployment", "curl", "port $", "image $", "code|kubectl#run#nginx#--image=nginx#--port=80", ".yml", ".yaml", "nginx", "apiVersion", "kind", "metadata#name", "nginx-pod", "labels.app", "configure-a-pod", "containerPort"]

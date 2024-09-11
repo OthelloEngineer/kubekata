@@ -14,11 +14,13 @@
       },
       {
         "title": "Configure a pod",
-        "description": "This level explains how to configure a pod by defining its specifications such as containers, storage, and network settings.",
-        "goal": "The goal of this lab is to configure a pod with specific requirements, including environment variables and resource limits.",
+        "picture": "/Configure_a_pod.png",
+        "description": "Pods, and many other Kubernetes artifacts, are configured using YAML files. These files <b>declaratively</b> describes how an artifact should be defined in the cluster.<br>A pod may be defined from descriptors such as the name of the pod, what container image it uses, the internal port, and labels.<br><br>When choosing the value of these descriptors, it can be a good idea to research what the container serves to do. For instance, the internal port should be assigned to what the container exposes (if it exposes anything at all).<br><br>For more information, visit Kubernetes' documentation on pods at: <a href='https://kubernetes.io/docs/concepts/workloads/pods/' target='_blank'>kubernetes.io/docs/concepts/workloads/pods</a>",
+        "goal": "The goal of this lab is to configure a pod with specific requirements, including environment variables and resource limits.<br><br>Create a YAML file by using the extension .yml or .yaml .<br>The file should contain the data from the picture on the right. Each descriptor should be filled out with information of a nginx container.<br><br>The apiVersion and kind should be the equivalent of a pod .<br>The metadata#name should be nginx-pod , and the labels.app should be configure-a-pod .<br>The container image<i> </i>should be nginx, but you should find the port<i> </i>on your own. Try and find the image<i> </i>on docker hub to see its port.<br><br><hr><br>What does the containerPort describe?",
+        "hint": "Try looking at the link in the info box for a solution.",
         "isCompleted": false,
+        "isApproved": false,
         "isQuestion": false
-
       },
       {
         "title": "Access a pod",
