@@ -1,3 +1,5 @@
+import { VITE_CLUSTER_OBSERVER_PORT, VITE_CLUSTER_OBSERVER_URL } from "$env/static/private";
+
 const getMap = new Map<string, (url: string, msg: string) => Promise<any>>();
 getMap.set("clusterState", getClusterState);
 getMap.set("desired", getDesiredState);
@@ -10,7 +12,7 @@ export async function GET({ url }) {
     console.log("Development mode");
     return new Response(JSON.stringify({ error: "Not implemented" }));
   }
-  let observerUrl = "http://cluster-observer:8080";
+  let observerUrl = `http://${VITE_CLUSTER_OBSERVER_URL}:${VITE_CLUSTER_OBSERVER_PORT}`;
 
   // Get the 'url' parameter from the query string
   let path = url.searchParams.get("url");

@@ -31,3 +31,11 @@ export function getPodsFromDeploymentJSON(deployment: any): Pod[] {
   }
   return pods;
 }
+
+export function printEnvs() {
+  console.log("VITE_CLUSTER_OBSERVER_URL", import.meta.env.VITE_CLUSTER_OBSERVER_URL);
+  console.log("VITE_CLUSTER_OBSERVER_PORT", import.meta.env.VITE_CLUSTER_OBSERVER_PORT);
+  console.log("USE_CLUSTER", import.meta.env.VITE_USE_CLUSTER);
+  console.log("CLUSTER_OBSERVER_URL", import.meta.env.VITE_CLUSTER_OBSERVER_URL);
+  console.log("CLUSTER_OBSERVER_PORT", import.meta.env.VITE_CLUSTER_OBSERVER_PORT);
+}

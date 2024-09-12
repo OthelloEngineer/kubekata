@@ -1,12 +1,16 @@
 import fs from "fs";
 const getMap = new Map<string, (url: string) => Promise<any>>();
-const MODE = import.meta.env.MODE;
+const USE_CLUSTER = import.meta.env.VITE_USE_CLUSTER;
+const CURLPOD_URL = import.meta.env.VITE_CURLPOD_URL;
+const CURLPOD_PORT = import.meta.env.VITE_CURLPOD_PORT;
+const CLUSTER_OBSERVER_URL = import.meta.env.VITE_CLUSTER_OBSERVER_URL;
+const CLUSTER_OBSERVER_PORT = import.meta.env.VITE_CLUSTER_OBSERVER_PORT;
 export async function GET({ url }) {
-  if (MODE === "development") {
+  if (USE_CLUSTER === "false") {
     return new Response(JSON.stringify({ error: "Not implemented" }));
   }
 
-  let curlpod_url = "http://curlpod:8080"; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
+  let curlpod_url = `http://${CURLPOD_URL}:${CURLPOD_PORT}`; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
   console.log("Curlpod URL: ", curlpod_url);
   let request = url.searchParams.get("url");
   if (!request) {
@@ -57,13 +61,13 @@ export async function GET({ url }) {
 }
 
 export async function POST({ request }: any) {
-  if (MODE === "development") {
+  if (USE_CLUSTER === "false") {
     return new Response(JSON.stringify({ error: "Not implemented" }));
   }
   const config = await request.text();
   console.log("Received kubeconfig:", getNamespaceAndServerFromConfig(config));
   try {
-    fetch("http://cluster-observer:8080/upload", {
+    fetch(`http://${CLUSTER_OBSERVER_URL}:${CLUSTER_OBSERVER_PORT}/upload`, {
       method: "POST",
       headers: {
         "Content-Type": "text/plain",
