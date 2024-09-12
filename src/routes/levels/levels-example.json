@@ -25,8 +25,6 @@
         "goal": "The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Pod resources",
@@ -34,8 +32,6 @@
         "goal": "The goal is to define and monitor resource requests and limits for pods to ensure efficient use of cluster resources.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Labels",
@@ -43,8 +39,6 @@
         "goal": "The goal is to use labels and selectors to organize pods and other resources effectively.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "ReplicaSet",
@@ -52,8 +46,6 @@
         "goal": "The goal is to create a ReplicaSet that maintains a desired number of pod replicas and manages their lifecycle.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "The scary deployment",
@@ -61,8 +53,6 @@
         "goal": "The goal is to implement and manage complex deployment strategies in a Kubernetes cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "The not-so-scary deployment",
@@ -70,8 +60,6 @@
         "goal": "The goal is to deploy a simple application using Kubernetes' deployment resources and manage its lifecycle.",
         "isCompleted": false,
         "isQuestion": false
-
-
       }
     ]
   },
@@ -84,8 +72,6 @@
         "goal": "The goal is to create a Kubernetes Service to expose a set of Pods, allowing them to be accessed from within and outside the cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Service types",
@@ -93,8 +79,6 @@
         "goal": "The goal is to create and understand the use cases for different Kubernetes Service types.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Service discovery",
@@ -102,8 +86,6 @@
         "goal": "The goal is to configure service discovery mechanisms and access Services by name within a Kubernetes cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Service load balancing",
@@ -111,8 +93,6 @@
         "goal": "The goal is to implement and test load balancing for a Service in a Kubernetes cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Service DNS",
@@ -120,8 +100,6 @@
         "goal": "The goal is to configure and test DNS-based service discovery in a Kubernetes cluster.",
         "isCompleted": false,
         "isQuestion": false
-
-
       },
       {
         "title": "Service annotations",

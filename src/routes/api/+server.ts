@@ -1,10 +1,11 @@
 import fs from "fs";
 const getMap = new Map<string, (url: string) => Promise<any>>();
-getMap.set("/clusterState", getClusterState);
-getMap.set("/desiredState", getDesiredState);
-getMap.set("/diff", getDiff);
-
+const MODE = import.meta.env.MODE;
 export async function GET({ url }) {
+  if (MODE === "development") {
+    return new Response(JSON.stringify({ error: "Not implemented" }));
+  }
+
   let curlpod_url = "http://curlpod:8080"; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
   console.log("Curlpod URL: ", curlpod_url);
   let request = url.searchParams.get("url");
@@ -56,6 +57,9 @@ export async function GET({ url }) {
 }
 
 export async function POST({ request }: any) {
+  if (MODE === "development") {
+    return new Response(JSON.stringify({ error: "Not implemented" }));
+  }
   const config = await request.text();
   console.log("Received kubeconfig:", getNamespaceAndServerFromConfig(config));
   try {
@@ -91,9 +95,3 @@ function getNamespaceAndServerFromConfig(config: String) {
 
   return { server, namespace };
 }
-
-async function getClusterState(url: string) {}
-
-async function getDesiredState(url: string): Promise<any> {}
-
-async function getDiff(url: string): Promise<any> {}

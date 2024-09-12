@@ -3,7 +3,13 @@ getMap.set("clusterState", getClusterState);
 getMap.set("desired", getDesiredState);
 getMap.set("status", getDiff);
 
+const MODE = import.meta.env.MODE;
+
 export async function GET({ url }) {
+  if (MODE === "development") {
+    console.log("Development mode");
+    return new Response(JSON.stringify({ error: "Not implemented" }));
+  }
   let observerUrl = "http://cluster-observer:8080";
 
   // Get the 'url' parameter from the query string

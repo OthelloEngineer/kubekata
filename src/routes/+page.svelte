@@ -7,7 +7,8 @@
     import { Hr, P, Button } from "flowbite-svelte";
     import { ArrowRightOutline } from "flowbite-svelte-icons";
     import CuddleBubble from "$lib/components/CuddleBubble.svelte";
-
+    const MODE = import.meta.env.MODE;
+    console.log("MODE: ", MODE);
 </script>
 
 <div class="flex flex-col justify-center items-center space-y-10 h-screen">
