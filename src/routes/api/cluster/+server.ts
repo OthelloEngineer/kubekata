@@ -7,9 +7,9 @@ getMap.set("status", getDiff);
 
 
 const MODE = import.meta.env.MODE;
-
+const USE_CLUSTER = import.meta.env.VITE_USE_CLUSTER;
 export async function GET({ url }) {
-  if (MODE === "development") {
+  if (USE_CLUSTER === "false") {
     console.log("Development mode");
     return new Response(JSON.stringify(getClusterJson()), { status: 200 });
   }
