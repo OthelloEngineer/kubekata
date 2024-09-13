@@ -6,7 +6,7 @@
         "title": "What is a pod",
         "picture": "https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg",
         "description": "A pod is a deployable unit in Kubernetes which represents a collection of containers in a Kubernetes cluster (usually it only consists of one container).<br><br>It shares the same network and file structure, which allows it to communicate with other pods efficiently and to share resources across the whole system.",
-        "goal": "The goal of this lab is to understand the network within Kubernetes by simulating communication between two pods <br><br>Create a pod with the image nginx and expose it on port 80 . Then try to use the Intra-Cluster Shell to curl the container on port 80 where the pod is exposed.<br><br>To create a pod, you can use the following command: code|kubectl#run#nginx#--image=nginx#--port=80 <br><hr><br>What output does the curl command give?<br>Why isn't it possible to curl the nginx pod from your own terminal?",
+        "goal": "The goal of this lab is to understand the network within Kubernetes by simulating communication between two pods <br><br>Create a pod with the image nginx and expose it on port 80 . Then try to use the Intra-Cluster Shell to curl the container on port 80 where the pod is exposed.<br><br>To create a pod, you can use the following command: code|kubectl#run#nginx#--image=nginx#--port=80 <br><hr><br>What output does the curl command give?<br>Why isn't it possible to curl the nginx pod from your own terminal?<br>How do we delete the pod?",
         "hint": "You can get the IP of all pods by running: 'kubectl get pods -o wide'",
         "isCompleted": false,
         "isApproved": false,
@@ -24,45 +24,67 @@
       },
       {
         "title": "Access a pod",
-        "description": "Learn how to access the containers running inside a pod using various methods such as kubectl exec, port forwarding, and service exposure.",
-        "goal": "The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster.",
+        "picture": "/Configure_a_service.png",
+        "description": "After deploying a pod it should be exposed so we can access it. For instance, a basic nginx pod is most useful when we can open it in the browser.<br>For this it's necessary to expose the pods port so we can access it from our own machine. There are a few ways of doing this. The easiest, which is mostly used for testing, is to use port-forwarding, which exposes the port on your local machine. This is only a temporary implementation, as it needs a running terminal window to keep the forward running.<br><br>Another solution is to use Services which are configurations exposing pods to a network. Configuring a service is the same process as configuring a pod with yaml files.<br><br>For more information on services visit Kubernetes' documentation on services as: <a href='https://kubernetes.io/docs/concepts/services-networking/service/' target='_blank'>https://kubernetes.io/docs/concepts/services-networking/service/</a>",
+        "goal": "The goal is to access the running pod through a web browser using both port-forwarding and a service, but not at the same time.<br><br>This exercise is dependent on the previous exercise where a pod must be configured. Therefore, the pod from last exercise should still be running.<br><br>To port-forward the pod use the following command: code|kubectl#port-forward#nginx-pod#8080:80 <br>This exposes the pod on localhost:8080 and/or 127.0.0.1:8080 .<br><br><hr><br>When configuring the service, use the template as seen in the image<i> </i>on the right. The kind must be a Service with an apiVersion corresponding to that. The name should be access-a-pod. The type should be a NodePort.  The app should be the app label of the nginx pod . The protocol should be TCP and the ports should match the pods containerPort .<br><br>After applying the service, retrieve the external port<i> </i>and go to localhost:EXTERNAL-PORT .<br><br>For people using Minikube! You must use the following command to forward the service: code|minikube#service#access-a-pod#--url <br>You will then get a link to use in your browser.",
+        "hint": "You can get the external port of all services by running 'kubectl get services'",
         "isCompleted": false,
+        "isApproved": false,
+        "isQuestion": false
+      },
+      {
+        "title": "Exec",
+        "description": "",
+        "goal": "COPIED: Learn how to access the containers running inside a pod using various methods such as kubectl exec, port forwarding, and service exposure.",
+        "hint": "COPIED: The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster.",
+        "isCompleted": false,
+        "isApproved": false,
         "isQuestion": false
       },
       {
         "title": "Pod resources",
         "description": "Understand how to manage and monitor the resources used by pods, including CPU, memory, and storage.",
         "goal": "The goal is to define and monitor resource requests and limits for pods to ensure efficient use of cluster resources.",
+        "hint": "",
         "isCompleted": false,
-        "isQuestion": false
+        "isQuestion": false,
+        "isApproved": false
       },
       {
         "title": "Labels",
         "description": "Learn about labeling resources in Kubernetes to organize and select subsets of objects.",
         "goal": "The goal is to use labels and selectors to organize pods and other resources effectively.",
+        "hint": "",
         "isCompleted": false,
-        "isQuestion": false
+        "isQuestion": false,
+        "isApproved": false
       },
       {
         "title": "ReplicaSet",
         "description": "A ReplicaSet ensures that a specified number of pod replicas are running at any given time.",
         "goal": "The goal is to create a ReplicaSet that maintains a desired number of pod replicas and manages their lifecycle.",
+        "hint": "",
         "isCompleted": false,
-        "isQuestion": false
+        "isQuestion": false,
+        "isApproved": false
       },
       {
         "title": "The scary deployment",
         "description": "Explore advanced deployment strategies in Kubernetes, including canary releases and blue-green deployments.",
         "goal": "The goal is to implement and manage complex deployment strategies in a Kubernetes cluster.",
+        "hint": "",
         "isCompleted": false,
-        "isQuestion": false
+        "isQuestion": false,
+        "isApproved": false
       },
       {
         "title": "The not-so-scary deployment",
         "description": "Understand the basics of deploying applications in Kubernetes, focusing on simplicity and reliability.",
         "goal": "The goal is to deploy a simple application using Kubernetes' deployment resources and manage its lifecycle.",
+        "hint": "",
         "isCompleted": false,
-        "isQuestion": false
+        "isQuestion": false,
+        "isApproved": false
       }
     ]
   },
