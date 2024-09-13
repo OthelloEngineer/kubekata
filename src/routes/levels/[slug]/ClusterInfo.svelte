@@ -40,7 +40,7 @@
 </script>
 <div class="w-full p-8">
 <div
-    class="w-full p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 m-8 size-fit"
+    class="w-full p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 size-fit"
 >
     <h1 class="text-white text-xl font-semibold">Current Cluster State</h1>
     <!-- <p class="text-white">This is the current cluster box</p> -->
