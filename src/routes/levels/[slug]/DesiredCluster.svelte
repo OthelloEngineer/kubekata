@@ -19,7 +19,6 @@
         if (browser) {
             console.log("fetching; input: ", input);
             const url = `/api/cluster?url=desired&msg=${input}`;
-            input = "";
             const res = await fetch(url, {
                 method: "GET",
             })
@@ -27,7 +26,6 @@
                 .then((data) => {
                     const ensureCluster = JSON.stringify(data);
                     desiredState = getDefaultCluster();
-
                     desiredState = JSON.parse(ensureCluster);
                     console.log(desiredState);
                 });
