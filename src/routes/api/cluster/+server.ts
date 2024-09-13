@@ -1,16 +1,17 @@
 import { VITE_CLUSTER_OBSERVER_PORT, VITE_CLUSTER_OBSERVER_URL } from "$env/static/private";
-
+import { getClusterJson } from "$lib/utils";
 const getMap = new Map<string, (url: string, msg: string) => Promise<any>>();
 getMap.set("clusterState", getClusterState);
 getMap.set("desired", getDesiredState);
 getMap.set("status", getDiff);
+
 
 const MODE = import.meta.env.MODE;
 
 export async function GET({ url }) {
   if (MODE === "development") {
     console.log("Development mode");
-    return new Response(JSON.stringify({ error: "Not implemented" }));
+    return new Response(JSON.stringify(getClusterJson()), { status: 200 });
   }
   let observerUrl = `http://${VITE_CLUSTER_OBSERVER_URL}:${VITE_CLUSTER_OBSERVER_PORT}`;
 

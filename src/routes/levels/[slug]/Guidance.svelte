@@ -26,18 +26,9 @@
                 >KubeCuddle</span
             >
         </div>
-        {#key selected}
-        {console.log("IF STATEMENT selected: ", selected)}
-            {#if selected}
-        <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
-                {hint}
-        </p>
-            {:else}
-        <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
+        <p bind:this={paragraphElement} class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
                 {beforeHint}
         </p>
-            {/if}
-        {/key}
         <button
             class="flex flex-row-reverse"
             on:mouseover={() => {
@@ -48,10 +39,9 @@
             }}
             on:focus={() => {
                 fill = "#FFD700";
-                console.log(hint);
                 selected = true;
                 selected = selected;
-                console.log(selected);
+                paragraphElement.innerText = hint;
                 updateFill();
             }}
             on:blur={() => {}}
