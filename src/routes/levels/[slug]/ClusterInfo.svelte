@@ -38,7 +38,7 @@
     };
     $: setupPoller();
 </script>
-
+<div class="w-full p-8">
 <div
     class="w-full p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 m-8 size-fit"
 >
@@ -49,4 +49,5 @@
             <DeploymentBox {deployment} />
         {/each}
     {/key}
+</div>
 </div>

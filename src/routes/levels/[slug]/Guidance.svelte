@@ -3,8 +3,13 @@
     export let hint = "oh no, you're stuck!";
     let beforeHint =
         "You can do this, I believe in you! Press on the lightbulb to get a hint if you're stuck!";
-    let fill = "#000000";
+    let  fill = "#000000";
     let selected = false;
+    let svgElement: SVGElement
+    let paragraphElement: HTMLParagraphElement
+    const updateFill = () => {
+        svgElement.setAttribute("fill", fill);
+     };
 </script>
 
 <div class="flex items-start gap-2.5">
@@ -21,34 +26,46 @@
                 >KubeCuddle</span
             >
         </div>
-        <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
+        {#key selected}
+        {console.log("IF STATEMENT selected: ", selected)}
             {#if selected}
+        <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
                 {hint}
-            {:else}
-                {beforeHint}
-            {/if}
         </p>
+            {:else}
+        <p class="text-sm font-normal py-2.5 text-gray-900 dark:text-white">
+                {beforeHint}
+        </p>
+            {/if}
+        {/key}
         <button
             class="flex flex-row-reverse"
             on:mouseover={() => {
                 if (!selected) {
                     fill = "#FFD700";
+                    updateFill();
                 }
             }}
             on:focus={() => {
                 fill = "#FFD700";
+                console.log(hint);
                 selected = true;
+                selected = selected;
+                console.log(selected);
+                updateFill();
             }}
             on:blur={() => {}}
             on:mouseout={() => {
                 if (!selected) {
                     fill = "#000000";
+                updateFill();
                 }
             }}
         >
             <svg
+                bind:this={svgElement}
                 class="outline-1 outline-black bg-blue-500 rounded-full w-6 h-6 hover:bg-blue-400"
-                {fill}
+                fill={fill}
                 height="800px"
                 width="800px"
                 version="1.1"
