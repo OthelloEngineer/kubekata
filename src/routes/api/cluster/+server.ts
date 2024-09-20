@@ -13,7 +13,7 @@ export async function GET({ url }) {
     console.log("Development mode");
     return new Response(JSON.stringify(getClusterJson()), { status: 200 });
   }
-  let observerUrl = `http://${VITE_CLUSTER_OBSERVER_URL}:${VITE_CLUSTER_OBSERVER_PORT}`;
+  let observerUrl = `${VITE_CLUSTER_OBSERVER_URL}:${VITE_CLUSTER_OBSERVER_PORT}`;
 
   // Get the 'url' parameter from the query string
   let path = url.searchParams.get("url");

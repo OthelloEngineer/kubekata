@@ -10,7 +10,7 @@ export async function GET({ url }) {
     return new Response(JSON.stringify({ error: "Not implemented" }));
   }
 
-  let curlpod_url = `http://${CURLPOD_URL}:${CURLPOD_PORT}`; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
+  let curlpod_url = `${CURLPOD_URL}:${CURLPOD_PORT}`; // Hardcoded, cause I can't get envs to work with TS but will refactor to config object later'
   console.log("Curlpod URL: ", curlpod_url);
   let request = url.searchParams.get("url");
   if (!request) {
@@ -67,7 +67,7 @@ export async function POST({ request }: any) {
   const config = await request.text();
   console.log("Received kubeconfig:", getNamespaceAndServerFromConfig(config));
   try {
-    fetch(`http://${CLUSTER_OBSERVER_URL}:${CLUSTER_OBSERVER_PORT}/upload`, {
+    fetch(`${CLUSTER_OBSERVER_URL}:${CLUSTER_OBSERVER_PORT}/upload`, {
       method: "POST",
       headers: {
         "Content-Type": "text/plain",
