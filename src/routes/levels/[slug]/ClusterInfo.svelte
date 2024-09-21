@@ -25,9 +25,10 @@
                     console.log("ensureCluster: ", ensureCluster);
                     const parsedEnsureCluster: Cluster = JSON.parse(ensureCluster);
                     if (parsedEnsureCluster.deployments === null) {
+                        console.log("no deployments");
                         parsedEnsureCluster.deployments = [];
                     };
-                    clusterState = getDefaultCluster();
+                    clusterState = getDefaultCluster(); // reset cluster, svelte cannot detect changes in nested objects
                     clusterState = parsedEnsureCluster;
                     clusterState = clusterState;
                     clusterState.deployments = clusterState.deployments;

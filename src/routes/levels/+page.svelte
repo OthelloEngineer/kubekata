@@ -16,6 +16,8 @@
                 body: text.toString(),
                 headers: {
                 }
+            }).then((res) => {
+                console.log("res: ", res)
             })
         })
     }

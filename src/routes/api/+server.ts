@@ -67,15 +67,25 @@ export async function POST({ request }: any) {
   const config = await request.text();
   console.log("Received kubeconfig:", getNamespaceAndServerFromConfig(config));
   try {
-    fetch(`${CLUSTER_OBSERVER_URL}:${CLUSTER_OBSERVER_PORT}/upload`, {
+    const reponse =  await fetch(`${CLUSTER_OBSERVER_URL}:${CLUSTER_OBSERVER_PORT}/upload`, {
       method: "POST",
       headers: {
         "Content-Type": "text/plain",
       },
       body: config,
     });
-    return new Response(JSON.stringify({ status: "OK" }), { status: 200 });
-  } catch (error) {
+    if (!reponse.ok) {
+      return new Response(
+        JSON.stringify({
+          error: `Failed to upload kubeconfig: ${reponse.statusText}`,
+        }),
+        { status: 500 },
+      );
+    }
+    return new Response(JSON.stringify({ success: "Kubeconfig uploaded" }), {
+      status: 200,
+    });
+} catch (error) {
     console.error("Fetch encountered an error:", error);
     return new Response(
       JSON.stringify({ error: "Server Error", details: error.message }),

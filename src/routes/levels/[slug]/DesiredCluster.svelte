@@ -16,6 +16,9 @@
         polling = setInterval(doFetch, 5000);
     };
     const doFetch = async () => {
+        if (isCompleted) {
+            return;
+        }
         if (browser) {
             console.log("fetching; input: ", input);
             const url = `/api/cluster?url=desired&msg=${input}`;
