@@ -10,6 +10,7 @@
     import CutePicture from "./CutePicture.svelte";
     let name = $page.params.slug;
     let levels = levelExample.flatMap((level) => level.levels);
+    console.log("levels type: ", typeof levels);
     let level = levels.find((level) => level.title === name);
     let isComplete = level?.isCompleted;
     let description = level?.description;

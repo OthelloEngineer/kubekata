@@ -5,6 +5,7 @@
     import levelExample from "./levels-example.json";
     let height = 20;
     let files: FileList;
+    let hasSuccessfullyUploaded = false;
     
 
     function print_file() {
@@ -16,6 +17,13 @@
                 body: text.toString(),
                 headers: {
                 }
+            }).then((res) => {
+                console.log("res: ", res)
+                if (res.status !== 200) {
+                    console.log("error: ", res)
+                    return
+                }
+                hasSuccessfullyUploaded = true
             })
         })
     }
@@ -38,10 +46,15 @@
     <span> upload your kube "config" file </span>
 
 
-    {#if files !== undefined}
-        <button on:click={print_file}> confirm upload </button>
-    {:else }
-        <input bind:files type="file"  />
+    {#if hasSuccessfullyUploaded}
+        <span class="text-green-500, font-bold, bg-green-300, p-2, rounded-md, text-center, w-48, h-12, flex, items-center, justify-center"
+        > successfully uploaded </span>
+    {:else}
+        {#if files !== undefined}
+            <button on:click={print_file}> confirm upload </button>
+        {:else }
+            <input bind:files type="file"  />
+        {/if}  
     {/if}
     </div>
     <div class="flex flex-row space-x-8 items-center">
