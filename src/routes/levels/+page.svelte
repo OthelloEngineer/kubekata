@@ -6,6 +6,7 @@
     let height = 20;
     let files: FileList;
     let hasSuccessfullyUploaded = false;
+    $: currentMode = "Service Account"
     
 
     function print_file() {
@@ -25,6 +26,7 @@
                 }
                 hasSuccessfullyUploaded = true
             })
+            currentMode = "Config"
         })
     }
 </script>
@@ -43,7 +45,7 @@
         <img class="object-contain" src={kubecuddle} alt="KubeCuddleFish" />
     </div>
     <div> 
-    <span> upload your kube "config" file </span>
+    <span> Switch to "config" Mode </span>
 
 
     {#if hasSuccessfullyUploaded}

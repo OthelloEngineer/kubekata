@@ -1,91 +1,100 @@
 [
   {
+    "name": "KubeKata introduction",
+    "levels": [
+      {
+        "title": "What is KubeKata?", 
+        "picture": "kubekata.png",
+        "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to KubeKata and its components, followed by sections where you will help KubeKata inc. deploy, configure, debug, and monitor their applications on Kubernetes.",
+        "goal": "For this section, the goal is to understand what KubeKata is and how it can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",	
+        "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
+      },
+      {
+        "title": "Components of KubeKata",
+        "picture": "kubekata-components.png",
+        "description": "KubeKata is composed of seven main components: A description of the level, the goal of the level, a hint to help you complete the level, a picture illustrating the mechanisms and concepts of the level, a hint to help you complete the level, a live cluster state of the kubernetes cluster, a desired kubernetes cluster state with an optional question that shows how the cluster should look like after the level is completed, and lastly an intracluster terminal which allows you to perform network operations as if you were an application inside the cluster.",
+        "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      }
+    ]
+  },
+  {
     "name": "deployment",
     "levels": [
       {
-        "title": "What is a pod",
-        "picture": "https://kubernetes.io/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg",
-        "description": "A pod is a deployable unit in Kubernetes which represents a collection of containers in a Kubernetes cluster (usually it only consists of one container).<br><br>It shares the same network and file structure, which allows it to communicate with other pods efficiently and to share resources across the whole system.",
-        "goal": "The goal of this lab is to understand the network within Kubernetes by simulating communication between two pods <br><br>Create a pod with the image nginx and expose it on port 80 . Then try to use the Intra-Cluster Shell to curl the container on port 80 where the pod is exposed.<br><br>To create a pod, you can use the following command: code|kubectl#run#nginx#--image=nginx#--port=80 <br><hr><br>What output does the curl command give?<br>Why isn't it possible to curl the nginx pod from your own terminal?<br>How do we delete the pod?",
-        "hint": "You can get the IP of all pods by running: 'kubectl get pods -o wide'",
+        "title": "Simple deployment",
+        "picture": "deployment-simple.png", 
+        "description": "KubeKata inc. is deploying its first application to Kubernetes. The application is a simple web server that displays a welcome message. They need your help to create a Deployment to manage the application's Pods.",
+        "goal": "The goal is to deploy the manifest found in the othelloengineer/hello-go:1.0.0",
+        "hint": "|code|kubectl apply -f kubernetes/deployment-simple.yaml|code|",
         "isCompleted": false,
-        "isApproved": false,
+        "isApproved": true,
+        "isQuestion": true 
+      },
+      {
+        "title": "Curling The App",
+        "picture": "curl.png",
+        "description": "The app is now deployed and running. KubeKata inc. wants to test the app by sending an HTTP request to the Pod. They need your help to curl the app.",
+        "goal": "Use the intracluster terminal to curl the app. Write the response in the question box.to complete the level.",
+        "hint": "Find the IP address of the pod using |code|kubectl get pods -o wide|code| in your own terminal and curl the app using |code|curl <pod-ip>:8080|code| using your intracluster terminal.",
+        "isCompleted": false,
+        "isApproved": true,
         "isQuestion": true
       },
       {
-        "title": "Configure a pod",
-        "picture": "/Configure_a_pod.png",
-        "description": "Pods, and many other Kubernetes artifacts, are configured using YAML files. These files <b>declaratively</b> describes how an artifact should be defined in the cluster.<br>A pod may be defined from descriptors such as the name of the pod, what container image it uses, the internal port, and labels.<br><br>When choosing the value of these descriptors, it can be a good idea to research what the container serves to do. For instance, the internal port should be assigned to what the container exposes (if it exposes anything at all).<br><br>For more information, visit Kubernetes' documentation on pods at: <a href='https://kubernetes.io/docs/concepts/workloads/pods/' target='_blank'>kubernetes.io/docs/concepts/workloads/pods</a>",
-        "goal": "The goal of this lab is to configure a pod with specific requirements, including environment variables and resource limits.<br><br>Create a YAML file by using the extension .yml or .yaml .<br>The file should contain the data from the picture on the right. Each descriptor should be filled out with information of a nginx container.<br><br>The apiVersion and kind should be the equivalent of a pod .<br>The metadata#name should be nginx-pod , and the labels.app should be configure-a-pod .<br>The container image<i> </i>should be nginx, but you should find the port<i> </i>on your own. Try and find the image<i> </i>on docker hub to see its port.<br><br><hr><br>What does the containerPort describe?",
-        "hint": "Try looking at the link in the info box for a solution.",
+        "title": "DNS and Services",
+        "picture": "dns-services.png",
+        "description": "KubeKata inc. has experienced maintenance issues when Pods are destroyed and recreated. They need your help to create a Service to provide a stable endpoint for the application.",
+        "goal": "The goal is to create a Service to expose the Deployment. The Service should be of type ClusterIP and should target the Pods created by the Deployment.",
+        "hint": "|code|kubectl expose hello-go --port=8080 --type=ClusterIP|code|",
         "isCompleted": false,
-        "isApproved": false,
-        "isQuestion": false
+        "isApproved": true,
+        "isQuestion": true
       },
       {
-        "title": "Access a pod",
-        "picture": "/Configure_a_service.png",
-        "description": "After deploying a pod it should be exposed so we can access it. For instance, a basic nginx pod is most useful when we can open it in the browser.<br>For this it's necessary to expose the pods port so we can access it from our own machine. There are a few ways of doing this. The easiest, which is mostly used for testing, is to use port-forwarding, which exposes the port on your local machine. This is only a temporary implementation, as it needs a running terminal window to keep the forward running.<br><br>Another solution is to use Services which are configurations exposing pods to a network. Configuring a service is the same process as configuring a pod with yaml files.<br><br>For more information on services visit Kubernetes' documentation on services as: <a href='https://kubernetes.io/docs/concepts/services-networking/service/' target='_blank'>https://kubernetes.io/docs/concepts/services-networking/service/</a>",
-        "goal": "The goal is to access the running pod through a web browser using both port-forwarding and a service, but not at the same time.<br><br>This exercise is dependent on the previous exercise where a pod must be configured. Therefore, the pod from last exercise should still be running.<br><br>To port-forward the pod use the following command: code|kubectl#port-forward#nginx-pod#8080:80 <br>This exposes the pod on localhost:8080 and/or 127.0.0.1:8080 .<br><br><hr><br>When configuring the service, use the template as seen in the image<i> </i>on the right. The kind must be a Service with an apiVersion corresponding to that. The name should be access-a-pod. The type should be a NodePort.  The app should be the app label of the nginx pod . The protocol should be TCP and the ports should match the pods containerPort .<br><br>After applying the service, retrieve the external port<i> </i>and go to localhost:EXTERNAL-PORT .<br><br>For people using Minikube! You must use the following command to forward the service: code|minikube#service#access-a-pod#--url <br>You will then get a link to use in your browser.",
-        "hint": "You can get the external port of all services by running 'kubectl get services'",
+        "title": "Exposing to the world",
+        "picture": "exposing-world.png",
+        "description": "KubeKata inc. are tired of curling the app from the intracluster terminal or from within the cluster. They need your help to expose the app to the world, so that it can be accessed from outside the cluster.",
+        "goal": "The goal is to create a Service of type NodePort to expose the Deployment. The Service should target the Pods created by the Deployment and should be accessible on port 30080.",
+        "hint": "Ensure that the clusterIP service is destroyed using |code|kubectl delete service hello-go|code| before running the command |code|kubectl expose hello-go --port=8080 --type=NodePort|code|",
         "isCompleted": false,
-        "isApproved": false,
-        "isQuestion": false
+        "isApproved": true,
+        "isQuestion": true
       },
       {
-        "title": "Exec",
-        "description": "",
-        "goal": "COPIED: Learn how to access the containers running inside a pod using various methods such as kubectl exec, port forwarding, and service exposure.",
-        "hint": "COPIED: The goal is to access the running pod and inspect the logs, run commands inside the container, and access the pod from outside the cluster.",
+        "title": "configuring the app",
+        "picture": "configuring-app.png",
+        "description": "KubeKata inc. wants to configure the app to display a custom welcome message writing 'KubeKata FTW'. They need your help to update the Deployment with a new environment variable. One of their developers have created a kubernetes controller that will require the app to have the label 'hello: go'",
+        "goal": "The goal is to update the Deployment to set the environment variable MESSAGE to 'KubeKata FTW' and the label 'hello: go'.",
+        "hint": "reconfigure the kubernetes manifest to include the environment variable MESSAGE with the value 'KubeKata FTW' and the label 'hello: go'.",
         "isCompleted": false,
-        "isApproved": false,
-        "isQuestion": false
+        "isApproved": true,
+        "isQuestion": true
       },
       {
-        "title": "Pod resources",
-        "description": "Understand how to manage and monitor the resources used by pods, including CPU, memory, and storage.",
-        "goal": "The goal is to define and monitor resource requests and limits for pods to ensure efficient use of cluster resources.",
-        "hint": "",
+        "title": "Persistent storage",
+        "picture": "persistent-storage.png",
+        "description": "KubeKata inc. wants to keep track of how many times the app has been accessed in their kubekata:1.1.0 release. However, they have experienced data loss when Pods are destroyed and recreated. They need your help to create a PersistentVolume and PersistentVolumeClaim to store the data.",
+        "goal": "The goal is to create a PersistentVolume and PersistentVolumeClaim to store the data. The PersistentVolume should have a capacity of 1Gi and should be of type hostPath. The PersistentVolumeClaim should request 1Gi of storage and should be bound to the PersistentVolume.",
+        "hint": "|code|kubectl apply -f kubernetes/persistent-storage.yaml|code| and ensure that the PersistentVolume and PersistentVolumeClaim are created and bound successfully.",
         "isCompleted": false,
-        "isQuestion": false,
-        "isApproved": false
+        "isApproved": true,
+        "isQuestion": true
       },
       {
-        "title": "Labels",
-        "description": "Learn about labeling resources in Kubernetes to organize and select subsets of objects.",
-        "goal": "The goal is to use labels and selectors to organize pods and other resources effectively.",
-        "hint": "",
-        "isCompleted": false,
-        "isQuestion": false,
-        "isApproved": false
-      },
-      {
-        "title": "ReplicaSet",
-        "description": "A ReplicaSet ensures that a specified number of pod replicas are running at any given time.",
-        "goal": "The goal is to create a ReplicaSet that maintains a desired number of pod replicas and manages their lifecycle.",
-        "hint": "",
-        "isCompleted": false,
-        "isQuestion": false,
-        "isApproved": false
-      },
-      {
-        "title": "The scary deployment",
-        "description": "Explore advanced deployment strategies in Kubernetes, including canary releases and blue-green deployments.",
-        "goal": "The goal is to implement and manage complex deployment strategies in a Kubernetes cluster.",
-        "hint": "",
-        "isCompleted": false,
-        "isQuestion": false,
-        "isApproved": false
-      },
-      {
-        "title": "The not-so-scary deployment",
-        "description": "Understand the basics of deploying applications in Kubernetes, focusing on simplicity and reliability.",
-        "goal": "The goal is to deploy a simple application using Kubernetes' deployment resources and manage its lifecycle.",
-        "hint": "",
-        "isCompleted": false,
-        "isQuestion": false,
-        "isApproved": false
+        "title": "Share configuration",
+        "picture": "share-configuration.png",
+        "description": "KubeKata inc. wants to share the message of the app with other teams in the company. This will however require them to store the message in a ConfigMap. They need your help to create a ConfigMap to store the message.",
+        "goal": "The goal is to create a ConfigMap to store the message. The ConfigMap should have a key MESSAGE and a value 'KubeKata FTW'.",
+
       }
+
+
     ]
   },
   {
