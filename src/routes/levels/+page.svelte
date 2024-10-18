@@ -41,6 +41,10 @@
    "
 >
     <h1 class="text-4xl">Levels</h1>
+    <!-- a box displaying the current mode -->
+    <div class="flex flex-row space-x-4 items-center justify-center bg-gray-200 p-2 rounded-md bg-opacity-50">
+        <span> Current Mode: {currentMode} </span>
+    </div>
     <div class="flex flex-row-reverse h-full">
         <img class="object-contain" src={kubecuddle} alt="KubeCuddleFish" />
     </div>

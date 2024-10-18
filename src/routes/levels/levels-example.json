@@ -91,7 +91,10 @@
         "picture": "share-configuration.png",
         "description": "KubeKata inc. wants to share the message of the app with other teams in the company. This will however require them to store the message in a ConfigMap. They need your help to create a ConfigMap to store the message.",
         "goal": "The goal is to create a ConfigMap to store the message. The ConfigMap should have a key MESSAGE and a value 'KubeKata FTW'.",
-
+        "hint": "config maps has a 'data' field that can be used to store key-value pairs. Create a ConfigMap with the key MESSAGE and the value 'KubeKata FTW'.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
       }
 
 
