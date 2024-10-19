@@ -2,9 +2,7 @@
     import "../../app.css";
 </script>
 
-<div class="animated-background">
     <slot></slot>
-</div>
 
 <style lang="postcss">
     :root {

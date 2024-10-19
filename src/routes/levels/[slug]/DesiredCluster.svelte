@@ -1,14 +1,17 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import DeploymentBox from "$lib/components/DeploymentBox.svelte";
+    import ServiceBox from "$lib/components/ServiceBox.svelte";
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
+    import levelExample from "../levels-example.json";
     $: desiredState = getDefaultCluster();
     let polling: NodeJS.Timeout;
     let input: string = "";
     let inputElement: HTMLInputElement;
     let hint = "No state changes yet";
     export let needsQuestion: boolean = false;
-    export let isCompleted: boolean;
+    export let isCompleted: boolean = false;
+    let isLoading = true;
     const setupPoller = () => {
         if (polling) {
             clearInterval(polling);
@@ -16,7 +19,7 @@
         polling = setInterval(doFetch, 5000);
     };
     const doFetch = async () => {
-        if (browser) {
+        if (browser && isCompleted === false) {
             console.log("fetching; input: ", input);
             const url = `/api/cluster?url=desired&msg=${input}`;
             const res = await fetch(url, {
@@ -28,6 +31,7 @@
                     desiredState = getDefaultCluster();
                     desiredState = JSON.parse(ensureCluster);
                     console.log(desiredState);
+                    isLoading = false;
                 });
             const checkUrl = `/api/cluster?url=status`;
             await fetch(checkUrl, {
@@ -42,6 +46,20 @@
                     hint = data;
                     if (hint === "success") {
                         isCompleted = true;
+                        // find the level in the levels array and set isCompleted to true
+                        levelExample.forEach((superLevel) => {
+                            superLevel.levels.forEach((level) => {
+                                if (level.title === "Desired Cluster State") {
+                                    level.isCompleted = true;
+                                }
+                            });
+                        });
+                        // does this change the json file?
+                        levelExample.forEach((superLevel) => {
+                            superLevel.levels.forEach((level) => {
+                                console.log("level: ", level.isCompleted);
+                            });
+                        });
                     }
                 });
         }
@@ -67,8 +85,19 @@
         <span class="dark:border-gray-700 bg-opacity-40 text-green-500">Level Completed!</span>
     {/if}
 </div>
+{#if isLoading}
+    <p>Loading...</p>  
+
+{:else}
+
     {#each desiredState.deployments as deployment}
         <DeploymentBox {deployment} />
     {/each}
+    {#each desiredState.services as service}
+        <ServiceBox {service} />
+    {/each}
+
+{/if}
 </div>
+
 </div>

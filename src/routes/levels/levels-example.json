@@ -3,8 +3,8 @@
     "name": "KubeKata introduction",
     "levels": [
       {
-        "title": "What is KubeKata?", 
-        "picture": "kubekata.png",
+        "title": "What is KubeKata", 
+        "picture": "random-image.png",
         "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to KubeKata and its components, followed by sections where you will help KubeKata inc. deploy, configure, debug, and monitor their applications on Kubernetes.",
         "goal": "For this section, the goal is to understand what KubeKata is and how it can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",	
         "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
@@ -16,6 +16,7 @@
         "title": "Components of KubeKata",
         "picture": "kubekata-components.png",
         "description": "KubeKata is composed of seven main components: A description of the level, the goal of the level, a hint to help you complete the level, a picture illustrating the mechanisms and concepts of the level, a hint to help you complete the level, a live cluster state of the kubernetes cluster, a desired kubernetes cluster state with an optional question that shows how the cluster should look like after the level is completed, and lastly an intracluster terminal which allows you to perform network operations as if you were an application inside the cluster.",
+        "goal": "The goal is to understand the components of KubeKata and how they can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",
         "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
         "isCompleted": false,
         "isApproved": true,
@@ -24,11 +25,11 @@
     ]
   },
   {
-    "name": "deployment",
+    "name": "Deploying the App",
     "levels": [
       {
-        "title": "Simple deployment",
-        "picture": "deployment-simple.png", 
+        "title": "simple deployment",
+        "picture": "deployment.png", 
         "description": "KubeKata inc. is deploying its first application to Kubernetes. The application is a simple web server that displays a welcome message. They need your help to create a Deployment to manage the application's Pods.",
         "goal": "The goal is to deploy the manifest found in the othelloengineer/hello-go:1.0.0",
         "hint": "|code|kubectl apply -f kubernetes/deployment-simple.yaml|code|",
@@ -57,6 +58,16 @@
         "isQuestion": true
       },
       {
+        "title": "Scaling the app",
+        "picture": "scaling-app.png",
+        "description": "KubeKata inc. is experiencing high traffic on the app. They need your help to scale the app to handle the increased load.",
+        "goal": "The goal is to scale the Deployment to 3 replicas.",
+        "hint": "|code|kubectl scale deployment hello-go --replicas=3|code|",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      },
+      {
         "title": "Exposing to the world",
         "picture": "exposing-world.png",
         "description": "KubeKata inc. are tired of curling the app from the intracluster terminal or from within the cluster. They need your help to expose the app to the world, so that it can be accessed from outside the cluster.",
@@ -65,7 +76,11 @@
         "isCompleted": false,
         "isApproved": true,
         "isQuestion": true
-      },
+      }
+    ]},
+  {
+    "name": "Maintaining the App",
+    "levels": [
       {
         "title": "configuring the app",
         "picture": "configuring-app.png",
@@ -95,56 +110,68 @@
         "isCompleted": false,
         "isApproved": true,
         "isQuestion": false
+      },
+      {
+        "title": "keeping a secret",
+        "picture": "keeping-secret.png",
+        "description": "KubeKata inc. wants to keep the message of the app a secret. They need your help to create a Secret to store the message.",
+        "goal": "The goal is to create a Secret to store the message. The Secret should have a key MESSAGE and a value 'KubeKata FTW'.",
+        "hint": "secrets are similar to config maps but are base64 encoded. Create a Secret with the key MESSAGE and the value 'KubeKata FTW'.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
       }
-
-
     ]
   },
   {
-    "name": "service",
-    "levels": [
+    "name": "Deploy explanation",
+    "levels" : [
       {
-        "title": "What is a service",
-        "description": "A Service in Kubernetes is an abstraction that defines a logical set of Pods and a policy by which to access them.",
-        "goal": "The goal is to create a Kubernetes Service to expose a set of Pods, allowing them to be accessed from within and outside the cluster.",
-        "isCompleted": false,
-        "isQuestion": false
+        "title": "Simple deployment"
       },
       {
-        "title": "Service types",
-        "description": "Learn about the different types of Services in Kubernetes, including ClusterIP, NodePort, and LoadBalancer.",
-        "goal": "The goal is to create and understand the use cases for different Kubernetes Service types.",
-        "isCompleted": false,
-        "isQuestion": false
+        "title": "scaling the app"
       },
       {
-        "title": "Service discovery",
-        "description": "Service discovery in Kubernetes involves finding and accessing Services within a cluster.",
-        "goal": "The goal is to configure service discovery mechanisms and access Services by name within a Kubernetes cluster.",
-        "isCompleted": false,
-        "isQuestion": false
+        "title": "Configs and secrets"
       },
       {
-        "title": "Service load balancing",
-        "description": "Explore how Kubernetes Services distribute traffic across Pods using load balancing.",
-        "goal": "The goal is to implement and test load balancing for a Service in a Kubernetes cluster.",
-        "isCompleted": false,
-        "isQuestion": false
-      },
-      {
-        "title": "Service DNS",
-        "description": "Kubernetes uses DNS to allow Services to be discovered by name, automatically creating DNS records for Services.",
-        "goal": "The goal is to configure and test DNS-based service discovery in a Kubernetes cluster.",
-        "isCompleted": false,
-        "isQuestion": false
-      },
-      {
-        "title": "Service annotations",
-        "description": "Annotations in Kubernetes provide a way to attach metadata to objects and are used for specific configuration purposes.",
-        "goal": "The goal is to apply annotations to Services to influence their behavior and integrate with external systems.",
-        "isCompleted": false,
-        "isQuestion": false
+        "title": "Volumes"
       }
     ]
+  },
+  {
+    "name": "Networking, explanation",
+    "levels" : [
+      {
+        "title": "Internal networking"
+      },
+      {
+        "title": "Services"
+      },
+      {
+        "title": "Service types"
+      }
+    ]    
+  },
+  {
+    "name": "Debugging simple app",
+    "levels": [
+      {
+        "title": "app not spinning up"
+      },
+      {
+        "title": "No persistence"
+      },
+      {
+        "title": "No env"
+      },
+      {
+        "title": "App connectivity"
+      },
+      {
+        "title": "Lost file"
+      }
+  ]
   }
 ]

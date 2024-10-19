@@ -56,7 +56,7 @@ export interface Service {
 
 export interface EndPoint {
   name: string;
-  pods: Pod[];
+  pod: Pod;
   namespace: string;
 }
 

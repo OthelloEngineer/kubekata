@@ -11,7 +11,7 @@
     printEnvs()
 </script>
 
-<div class="flex flex-col justify-center items-center space-y-10 h-screen">
+<div class="flex flex-col justify-center items-center space-y-10 h-screen flex-wrap">
     <div />
     <div class="flex flex-row animate-bounce w-max space-x-4">
         <img src={kubecuddle} alt="KubeCuddle" class="w-32" />
