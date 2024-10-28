@@ -2,7 +2,6 @@
     import { type Deployment, type Pod } from "$lib/KubernetesTypes";
     export let deployment: Deployment;
     let pods: Pod[] = [];
-    console.log("RERENDERING DEPLOYMENT BOX");
     if (deployment.pods) {
         pods = deployment.pods;
         console.log("logging pods: ", pods);
@@ -70,6 +69,11 @@
             {#each pods as pod}
                 <span class="p-1 outline outline-1 outline-white">
                     {pod.name}
+                    {#each pod.containers as container}
+                    <span> image: {container.image}</span>
+                    <span> envs: {container.envs.reduce((a,b) => {return `${a}, ${b}`})}</span>
+                    <span></span>
+                    {/each}
                 </span>
             {/each}
         </div>

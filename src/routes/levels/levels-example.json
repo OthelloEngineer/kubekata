@@ -35,7 +35,7 @@
         "hint": "|code|kubectl apply -f kubernetes/deployment-simple.yaml|code|",
         "isCompleted": false,
         "isApproved": true,
-        "isQuestion": true 
+        "isQuestion": false
       },
       {
         "title": "Curling The App",

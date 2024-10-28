@@ -3,12 +3,10 @@
 
     export let service: Service;
 
-    // Initialize `service.endpoints` as an empty array if it is undefined or null
     if (!Array.isArray(service.endpoints)) {
         service.endpoints = [];
     }
 
-    // For debugging, log the structure
     console.log("service: ", service);
     console.log("service.endpoints: ", service.endpoints);
     
@@ -20,9 +18,7 @@
 </script>
 
 <div class="w-full p-8">
-    <div class="w-full p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 size-fit">
-        <h1 class="text-white text-xl font-semibold">Current Cluster State</h1>
-
+    <div class="w-fit p-6 bg-white rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 bg-opacity-20 size-fit">
         <div class="p-4 bg-gray-800 text-white font-mono rounded-lg">
             <p>{service.name}</p>
 
