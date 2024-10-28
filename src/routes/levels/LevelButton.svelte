@@ -5,7 +5,7 @@
         return isCompleted ? "bg-green-500" : "bg-blue-500";
     }
 
-    console.log("level name: ", name);
+    // console.log("level name: ", name);
     export let goal = "default goal";
     export let description = "default description";
 
