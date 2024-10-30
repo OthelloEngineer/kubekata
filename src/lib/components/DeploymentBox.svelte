@@ -71,7 +71,9 @@
                     {pod.name}
                     {#each pod.containers as container}
                     <span> image: {container.image}</span>
+                    {#if Array.isArray(container.envs) && container.envs.length > 0}
                     <span> envs: {container.envs.reduce((a,b) => {return `${a}, ${b}`})}</span>
+                    {/if}
                     <span></span>
                     {/each}
                 </span>

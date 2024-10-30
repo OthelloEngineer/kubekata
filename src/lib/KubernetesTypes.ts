@@ -52,6 +52,7 @@ export interface Service {
   selector: Map<string, string>;
   namespace: string;
   endpoints: EndPoint[];
+  type: string;
 }
 
 export interface EndPoint {
