@@ -21,6 +21,16 @@
         "isCompleted": false,
         "isApproved": true,
         "isQuestion": true
+      },
+      {
+        "title": "What is kubectl",
+        "picture": "random-image.png",
+        "description": "Kubernetes uses the kubectl command-line tool to interact with the Kubernetes API server. Kubectl allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. Kubectl is a powerful tool that can help you manage your Kubernetes cluster. It works by making HTTP requests to the Kubernetes REST API server.",
+        "goal": "Try running the command code|kubectl#get#nodes in your terminal to see the nodes in your cluster. You should see a node named \"minikube\". But what is a node? A node is a worker machine in Kubernetes. You can have many, but currently you only have one.<br><br>After you've tried using the kubectl command, you can click on \"Solve\" to complete the level.",
+        "hint": "This is a hint! :D There is not much to hint for this level B)",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
       }
     ]
   },
