@@ -1,12 +1,20 @@
 # KubeKata - Your level-based kuberentes onboarding
-text goes here
+
+## How to use
+
+### Step 1: Install npm packages
+```sh
+npm install
+```
+
+### Step 2: Run the project
+```sh
+./ci/start.sh
+```
 
 
-# TODO:
-- Find some good UX for individual level design
-- Create busybox curl/nslook/dig/ping container with webserver + a help command to list aforementioned commands
-- Define better descriptions for each task so far + fill out missing fields in 2... level
-- Find a suitable display of the cluster state (Deployments, pods, svc, etc.)
-- Create cluster manager
-- Create microservice ping-pong
-- Create persistent volume microservice
+## When used in Kubernetes
+Before you can use it in Kubernetes, you have to create `clusterrolebinding`. This can be done with the `setup.sh` shell script:
+```sh
+./ci/setup.sh
+```
