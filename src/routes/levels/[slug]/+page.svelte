@@ -35,11 +35,9 @@
         description = "default description";
     }
     let goal = level?.goal;
-    let picture = "https://kubernetes.io/images/blog/2024-04-17-kubernetes-1.30-release/k8s-1.30.png";
-    if (level?.picture !== undefined) {
-        picture = level.picture;
-    }
+    let image = level?.picture;
     let hint = level?.hint;
+    console.log("image name: ", image);
 </script>
 
 <nav
@@ -88,7 +86,7 @@
     <div
         class="w-2/5 outline outline-1 outline-white mx-6 bg-white bg-opacity-20"
     >
-        <!-- <CutePicture svgName={picture} /> -->
+        <CutePicture imageName={`${image}`} />
     </div>
     <div class="flex flex-col ml-auto mx-4">
         <Guidance {hint} />

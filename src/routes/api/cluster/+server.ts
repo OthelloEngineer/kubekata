@@ -11,7 +11,7 @@ const MODE = import.meta.env.MODE;
 const USE_CLUSTER = import.meta.env.VITE_USE_CLUSTER;
 export async function GET({ url }) {
   if (USE_CLUSTER === "false") {
-    console.log("Development mode");
+    //console.log("Development mode");
     return new Response(JSON.stringify(getClusterJson()), { status: 200 });
   }
   let observerUrl = `${VITE_CLUSTER_OBSERVER_URL}:${VITE_CLUSTER_OBSERVER_PORT}`;

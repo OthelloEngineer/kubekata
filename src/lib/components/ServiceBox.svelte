@@ -42,6 +42,7 @@
                 {/each}
             {/if}
         </div>
+           
     </div>
 
     <div class="mb-4">
@@ -49,9 +50,26 @@
         <div class="flex flex-wrap gap-2">
             {#each service.ports as port}
                 <span class="bg-blue-100 text-blue-600 text-sm font-medium px-3 py-1 rounded-full">
-                    {port.port}
+                    {port}
                 </span>
             {/each}
         </div>
     </div>
+
+    <div class="mb-4">
+        <h4 class="text-lg font-semibold text-gray-800 mb-2">Endpoints</h4>
+        <div class="flex flex-wrap gap-2">
+            {#if service.endpoints.length > 0 }
+            {#each service.endpoints as endpoint}
+                <span class="bg-green-100 text-green-600 text-sm font-medium px-3 py-1 rounded-full">
+                    {endpoint.name}
+                </span>
+            {/each}
+            {:else}
+                <span class="bg-red-100 text-red-600 text-sm font-medium px-3 py-1 rounded-full">
+                    Service Not connected to any pods
+                </span>
+            {/if}
+        </div>
+</div>
 </div>

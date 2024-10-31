@@ -4,7 +4,7 @@
     "levels": [
       {
         "title": "What is KubeKata", 
-        "picture": "random-image.png",
+        "picture": "what-is-kubekata.png",
         "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to KubeKata and its components, followed by sections where you will help KubeKata inc. deploy, configure, debug, and monitor their applications on Kubernetes.",
         "goal": "For this section, the goal is to understand what KubeKata is and how it can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",	
         "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",

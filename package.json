@@ -29,6 +29,7 @@
 	"type": "module",
 	"dependencies": {
 		"@egjs/svelte-grid": "^1.16.0",
+		"@sveltejs/enhanced-img": "^0.3.10",
 		"@xyflow/svelte": "^0.1.14",
 		"bits-ui": "^0.21.13",
 		"clsx": "^2.1.1",
