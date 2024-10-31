@@ -54,10 +54,12 @@
         <h1 class="text-white text-2xl font-semibold">Current Cluster State</h1>
         <br>
         <!-- <p class="text-white">This is the current cluster box</p> -->
+        {#if Array.isArray(clusterState.deployments) && clusterState.deployments.length === 0}
         {#key FORCE_RERENDER}
             {#each clusterState.deployments as deployment}
                 <DeploymentBox {deployment} />
             {/each}
         {/key}
+        {/if}
     </div>
 </div>

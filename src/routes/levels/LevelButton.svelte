@@ -4,6 +4,7 @@
     function getButtonColor() {
         return isCompleted ? "bg-green-500" : "bg-blue-500";
     }
+    console.log("level name: ", name, "isCompleted: ", isCompleted);
 
     // console.log("level name: ", name);
     export let goal = "default goal";

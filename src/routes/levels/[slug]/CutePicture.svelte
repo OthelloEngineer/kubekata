@@ -13,5 +13,5 @@
 </script>
 
 <div class="w-full flex items-center justify-center overflow-hidden">
-    <img src={foundImage} alt="Dynamic Image" class="h-full w-auto object-cover max-h-96 pt-2"/>
+    <img src={foundImage} alt="H in kubernetes stands for happiness" class="h-full w-auto object-cover max-h-96 pt-2"/>
 </div>

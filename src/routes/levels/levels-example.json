@@ -5,7 +5,7 @@
       {
         "title": "What is KubeKata", 
         "picture": "what-is-kubekata.png",
-        "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to KubeKata and its components, followed by sections where you will help KubeKata inc. deploy, configure, debug, and monitor their applications on Kubernetes.",
+        "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to kubectl and KubeKata and its components, followed by sections where you will help KubeKata inc. (a very serious business who needs your help!) deploy, configure, debug, and monitor their applications on Kubernetes.",
         "goal": "For this section, the goal is to understand what KubeKata is and how it can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",	
         "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
         "isCompleted": false,
@@ -15,7 +15,7 @@
       {
         "title": "Components of KubeKata",
         "picture": "kubekata-components.png",
-        "description": "KubeKata is composed of seven main components: A description of the level, the goal of the level, a hint to help you complete the level, a picture illustrating the mechanisms and concepts of the level, a hint to help you complete the level, a live cluster state of the kubernetes cluster, a desired kubernetes cluster state with an optional question that shows how the cluster should look like after the level is completed, and lastly an intracluster terminal which allows you to perform network operations as if you were an application inside the cluster.",
+        "description": "KubeKata is composed of seven main components: A description of the level, the goal of the level, a hint to help you complete the level, a picture illustrating the mechanisms and concepts of the level, a live cluster state of the kubernetes cluster, a desired kubernetes cluster state with an optional question that shows how the cluster should look like after the level is completed, and lastly an intracluster terminal which allows you to perform network operations as if you were an application inside the cluster. (Spoiler alert: Kubernetes has its own private network and DNS!)",
         "goal": "The goal is to understand the components of KubeKata and how they can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",
         "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
         "isCompleted": false,
