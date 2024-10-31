@@ -33,14 +33,14 @@
                     console.log(desiredState);
                     isLoading = false;
                 });
-            console.log("fetching; input: ", input);
+            console.log("Question input ", input);
             const checkUrl = `/api/cluster?url=status&msg=${input}`;
             await fetch(checkUrl, {
                 method: "GET",
             })
                 .then((res) => res.json())
                 .then((data) => {
-                    console.log("desired: ", data);
+                    console.log("desired cluster state: ", data);
                     if (data.status === "success") {
                         clearInterval(polling);
                     }
@@ -58,7 +58,7 @@
                         // does this change the json file?
                         levelExample.forEach((superLevel) => {
                             superLevel.levels.forEach((level) => {
-                                console.log("level: ", level.isCompleted);
+                                console.log("desired level: ", level.isCompleted);
                             });
                         });
                     }

@@ -1,6 +1,7 @@
 <script lang="ts">
     import { browser } from "$app/environment";
     import DeploymentBox from "$lib/components/DeploymentBox.svelte";
+    import ServiceBox from "$lib/components/ServiceBox.svelte";
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
     import { setLevel } from "$lib/utils";
     import cluster from "cluster";
@@ -29,7 +30,7 @@
                 .then((res) => res.json())
                 .then((data) => {
                     const ensureCluster = JSON.stringify(data);
-                    console.log("ensureCluster: ", ensureCluster);
+                    console.log("current cluster state: ", ensureCluster);
                     const parsedEnsureCluster: Cluster = JSON.parse(ensureCluster);
                     if (parsedEnsureCluster.deployments === null) {
                         console.log("no deployments");
@@ -54,12 +55,17 @@
         <h1 class="text-white text-2xl font-semibold">Current Cluster State</h1>
         <br>
         <!-- <p class="text-white">This is the current cluster box</p> -->
-        {#if Array.isArray(clusterState.deployments) && clusterState.deployments.length === 0}
+        {#if Array.isArray(clusterState.deployments) && clusterState.deployments.length > 0}
         {#key FORCE_RERENDER}
             {#each clusterState.deployments as deployment}
                 <DeploymentBox {deployment} />
             {/each}
         {/key}
+        {/if}
+        {#if Array.isArray(clusterState.services) && clusterState.services.length > 0}
+            {#each clusterState.services as service}
+                <ServiceBox {service} />
+            {/each}
         {/if}
     </div>
 </div>

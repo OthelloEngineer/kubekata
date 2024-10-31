@@ -68,7 +68,7 @@
         "isQuestion": true
       },
       {
-        "title": "Scaling the app",
+        "title": "scaling the app",
         "picture": "scaling-app.png",
         "description": "KubeKata inc. is experiencing high traffic on the app. They need your help to scale the app to handle the increased load.",
         "goal": "The goal is to scale the Deployment to 3 replicas.",
