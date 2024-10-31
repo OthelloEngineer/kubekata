@@ -18,7 +18,7 @@ spec:
         emptyDir: {}
       containers:
       - name: cluster-observer
-        image: othelloengineer/kubekata-cluster-observer:0.2.0
+        image: othelloengineer/kubekata-cluster-observer:0.2.3
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
@@ -69,8 +69,21 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: othelloengineer/kubekata-level-frontend:0.2.2
-        resources:
+        image: othelloengineer/kubekata-level-frontend:0.2.3
+        imagePullPolicy: Always
+        env:
+        - name: CURLPOD
+          value: curlpod:8080
+        - name: VITE_USE_CLUSTER
+          value: "true"
+        - name: VITE_CURLPOD_URL
+          value: http://curlpod
+        - name: VITE_CURLPOD_PORT
+          value: "8080"
+        - name: VITE_CLUSTER_OBSERVER_URL
+          value: http://cluster-observer
+        - name: VITE_CLUSTER_OBSERVER_PORT
+          value: "8080"
         ports:
         - containerPort: 5137
 
@@ -85,6 +98,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8081
+    protocol: TCP
 
 ---
 
@@ -98,6 +112,7 @@ spec:
   ports:
   - port: 8080
     targetPort: 8080
+    protocol: TCP
 ---
 
 apiVersion: v1
@@ -109,5 +124,7 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 5137
-    targetPort: 5137
+  - nodePort: 31427
+    port: 5173
+    protocol: TCP
+    targetPort: 5173

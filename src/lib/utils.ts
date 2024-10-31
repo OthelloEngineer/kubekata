@@ -103,16 +103,11 @@ export function getClusterJson(){
         "endpoints": [
           {
             "name": "nginx",
-            "pods": [
-              {
-                "name": "nginx-7db9fccd9d-8x7jw",
-                "namespace": "default"
-              },
+            "pod": 
               {
                 "name": "nginx-7db9fccd9d-8x7jw",
                 "namespace": "default"
               }
-            ]
           }
         ]
       }

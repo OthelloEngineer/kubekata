@@ -1,4 +1,5 @@
 <script lang="ts">
+    export const ssr = false;
     import { page } from "$app/stores";
     import ClusterInfo from "./ClusterInfo.svelte";
     import Guidance from "./Guidance.svelte";
@@ -9,16 +10,28 @@
     import IntraClusterShell from "./IntraClusterShell.svelte";
     import CutePicture from "./CutePicture.svelte";
     let name = $page.params.slug;
+    name = name.replace(/-/g, " ");
     let levels = levelExample.flatMap((level) => level.levels);
     let level = levels.find((level) => level.title === name);
+    for (let i = 0; i < levels.length; i++) {
+        if (levels[i].title.toLowerCase() === name) {
+            level = levels[i];
+        }
+    }
+    console.log("level: ", level);
     let isComplete = level?.isCompleted;
+    if (isComplete === undefined) {
+        isComplete = false;
+    }
+    if (level?.isQuestion === undefined) {
+        level.isQuestion = false;
+    }
     let description = level?.description;
     if (description === undefined) {
         description = "default description";
     }
     let goal = level?.goal;
-    let picture =
-        "https://kubernetes.io/images/blog/2024-04-17-kubernetes-1.30-release/k8s-1.30.png";
+    let picture = "https://kubernetes.io/images/blog/2024-04-17-kubernetes-1.30-release/k8s-1.30.png";
     if (level?.picture !== undefined) {
         picture = level.picture;
     }
@@ -56,6 +69,10 @@
             </h5>
         {/if}
     </div>
+        <button
+            class="bg-green-800 hover:bg-green-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            >Solve</button
+        >
 </nav>
 <div class="flex">
     <div class="mx-6">
@@ -67,7 +84,7 @@
     <div
         class="w-2/5 outline outline-1 outline-white mx-6 bg-white bg-opacity-20"
     >
-        <CutePicture svgName={picture} />
+        <!-- <CutePicture svgName={picture} /> -->
     </div>
     <div class="flex flex-col ml-auto mx-4">
         <Guidance {hint} />
