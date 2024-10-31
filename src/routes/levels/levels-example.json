@@ -60,9 +60,9 @@
       {
         "title": "DNS and Services",
         "picture": "dns-services.png",
-        "description": "KubeKata inc. has experienced maintenance issues when Pods are destroyed and recreated. They need your help to create a Service to provide a stable endpoint for the application.",
-        "goal": "The goal is to create a Service to expose the Deployment. The Service should be of type ClusterIP and should target the Pods created by the Deployment.",
-        "hint": "|code|kubectl expose hello-go --port=8080 --type=ClusterIP|code|",
+        "description": "KubeKata inc. has experienced maintenance issues when Pods are destroyed and recreated! It has become a major issue that when a pod crashes and a new one spins up, the newer pod has a different IP. This means that KubeKata inc. Needs to change the IP configured in their other applications all the time. They need your help to create a Service to provide a stable endpoint for the application.",
+        "goal": "The goal is to create a Service to expose the Deployment. The Serviceshould target the Pods created by the Deployment and create Endpoints for them on port 8080",
+        "hint": "kubectl apply -f exercises/hello-go-service.yaml",
         "isCompleted": false,
         "isApproved": true,
         "isQuestion": true
@@ -70,7 +70,7 @@
       {
         "title": "scaling the app",
         "picture": "scaling-app.png",
-        "description": "KubeKata inc. is experiencing high traffic on the app. They need your help to scale the app to handle the increased load.",
+        "description": "Hurrah! Thanks to our genius new operations engineer, the app is now running smoothly and their customerbase has grown 3 times! Unfortunately, the app is not able to handle the increased load and when it crashes there is downtime, which causes a lot of customers to be sad :( . Although sadness is great for the dairy and chocolate busiess, it is detrimental to KubeKata inc. So, they need your help to scale the application to have 3 pods instead of only 1",
         "goal": "The goal is to scale the Deployment to 3 replicas.",
         "hint": "|code|kubectl scale deployment hello-go --replicas=3|code|",
         "isCompleted": false,
@@ -80,8 +80,8 @@
       {
         "title": "Exposing to the world",
         "picture": "exposing-world.png",
-        "description": "KubeKata inc. are tired of curling the app from the intracluster terminal or from within the cluster. They need your help to expose the app to the world, so that it can be accessed from outside the cluster.",
-        "goal": "The goal is to create a Service of type NodePort to expose the Deployment. The Service should target the Pods created by the Deployment and should be accessible on port 30080.",
+        "description": "The employees at KubeKata inc. have grown tired of serving every single costumer themselves by manually creating their requests and sending them to the app from inside the cluster. They need your help to expose the app to the world! They have heard that there is a mysterious thing called a Service of type NodePort that can help them with this.",
+        "goal": "The goal is to create a Service of type NodePort to expose the Deployment on the nodes themselves! Bonus point if you are able to ensure that the NodePort of the service is exposed on port 30080 The difference between Node port and ClusterIP is unfortunately not distinct when using minikube or talos",
         "hint": "Ensure that the clusterIP service is destroyed using |code|kubectl delete service hello-go|code| before running the command |code|kubectl expose hello-go --port=8080 --type=NodePort|code|",
         "isCompleted": false,
         "isApproved": true,
