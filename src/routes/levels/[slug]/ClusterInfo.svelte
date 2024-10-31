@@ -4,6 +4,7 @@
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
     import { setLevel } from "$lib/utils";
     import cluster from "cluster";
+    import { onDestroy } from "svelte";
     $: clusterState = getDefaultCluster();
     let polling: NodeJS.Timeout;
     let FORCE_RERENDER = 0;
@@ -13,6 +14,11 @@
         }
         polling = setInterval(doFetch, 3000);
     };
+
+    onDestroy(() => {
+        console.log("clearing interval");
+        clearInterval(polling);
+    });
 
     const doFetch = async () => {
         if (browser) {

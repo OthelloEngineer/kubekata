@@ -13,7 +13,6 @@
     export let needsQuestion: boolean = false;
     export let isCompleted: boolean = false;
     let isLoading = true;
-    export let levelName: string;
     const setupPoller = () => {
         if (polling) {
             clearInterval(polling);
@@ -22,8 +21,7 @@
     };
     const doFetch = async () => {
         if (browser && isCompleted === false) {
-            console.log("fetching; input: ", input);
-            const url = `/api/cluster?url=desired&msg=${input}`;
+            const url = `/api/cluster?url=desired`;
             const res = await fetch(url, {
                 method: "GET",
             })
@@ -35,7 +33,8 @@
                     console.log(desiredState);
                     isLoading = false;
                 });
-            const checkUrl = `/api/cluster?url=status`;
+            console.log("fetching; input: ", input);
+            const checkUrl = `/api/cluster?url=status&msg=${input}`;
             await fetch(checkUrl, {
                 method: "GET",
             })
@@ -67,7 +66,6 @@
         }
     };
 
-    setLevel(levelName);
     doFetch();
     $: setupPoller();
 </script>
@@ -93,12 +91,16 @@
             <p>Loading...</p>
         {:else}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {#if Array.isArray(desiredState.deployments) && desiredState.deployments.length > 0}
                 {#each desiredState.deployments as deployment}
                     <DeploymentBox {deployment} />
                 {/each}
+                {/if}
+                {#if Array.isArray(desiredState.services) && desiredState.services.length > 0}
                 {#each desiredState.services as service}
                     <ServiceBox {service} />
                 {/each}
+                {/if}
             </div>
         {/if}
     </div>

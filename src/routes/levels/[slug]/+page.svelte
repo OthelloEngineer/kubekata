@@ -9,15 +9,19 @@
     import levelExample from "../levels-example.json";
     import IntraClusterShell from "./IntraClusterShell.svelte";
     import CutePicture from "./CutePicture.svelte";
+    import { setLevel } from "$lib/utils";
     let name = $page.params.slug;
     name = name.replace(/-/g, " ");
     let levels = levelExample.flatMap((level) => level.levels);
+    console.log("levels: ", levels);
     let level = levels.find((level) => level.title === name);
+    console.log("searching for level: ", name);
     for (let i = 0; i < levels.length; i++) {
         if (levels[i].title.toLowerCase() === name) {
             level = levels[i];
         }
     }
+    setLevel(name);
     console.log("level: ", level);
     let isComplete = level?.isCompleted;
     if (isComplete === undefined) {
@@ -92,5 +96,5 @@
 </div>
 
 <ClusterInfo />
-<DesiredCluster bind:isCompleted={isComplete} needsQuestion={level?.isQuestion} levelName={level?.title} />
+<DesiredCluster bind:isCompleted={isComplete} needsQuestion={level?.isQuestion} />
 <IntraClusterShell />

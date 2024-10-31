@@ -20,11 +20,16 @@ export function getDeploymentsFromClusterState(
 }
 
 export function setLevel(level: string){
-  fetch(`/api/cluster?url=desired&msg=${level}`)
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  })
+  console.log("Setting level to", level);
+  try {
+    fetch(`/api/cluster?url=setLevel&msg=${level}`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Set level to", level, data);
+    })
+  } catch (error) {
+    console.error("Failed to set level", error);
+  }
 }
 
 export function getPodsFromDeploymentJSON(deployment: any): Pod[] {

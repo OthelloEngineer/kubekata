@@ -137,16 +137,16 @@
     "name": "Deploy explanation",
     "levels" : [
       {
-        "title": "Simple deployment"
+        "title": "Deployment manifest"
       },
       {
-        "title": "scaling the app"
+        "title": "How kubernetes scales"
       },
       {
-        "title": "Configs and secrets"
+        "title": "App configuration"
       },
       {
-        "title": "Volumes"
+        "title": "How kubernetes persists"
       }
     ]
   },

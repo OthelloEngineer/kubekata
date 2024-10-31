@@ -56,6 +56,7 @@ async function getDesiredState(url: string, msg: string): Promise<any> {
 }
 
 async function getDiff(url: string, msg: string): Promise<any> {
+  console.log("Getting diff with message:", msg);
   let response = await fetch(`${url}/status?msg=${msg}`);
   let text = await response.text();
   return text;
