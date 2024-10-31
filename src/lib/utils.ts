@@ -19,6 +19,14 @@ export function getDeploymentsFromClusterState(
   return deployments;
 }
 
+export function setLevel(level: string){
+  fetch(`/api/cluster?url=desired&msg=${level}`)
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  })
+}
+
 export function getPodsFromDeploymentJSON(deployment: any): Pod[] {
   let pods: Pod[] = [];
   for (let pod of deployment.pods) {

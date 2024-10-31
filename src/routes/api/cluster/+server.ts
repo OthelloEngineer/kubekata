@@ -4,6 +4,7 @@ const getMap = new Map<string, (url: string, msg: string) => Promise<any>>();
 getMap.set("clusterState", getClusterState);
 getMap.set("desired", getDesiredState);
 getMap.set("status", getDiff);
+getMap.set("setLevel", setLevel);
 
 
 const MODE = import.meta.env.MODE;
@@ -56,6 +57,12 @@ async function getDesiredState(url: string, msg: string): Promise<any> {
 
 async function getDiff(url: string, msg: string): Promise<any> {
   let response = await fetch(`${url}/status?msg=${msg}`);
+  let text = await response.text();
+  return text;
+}
+
+async function setLevel(url: string, msg: string): Promise<any> {
+  let response = await fetch(`${url}/setLevel?level=${msg}`);
   let text = await response.text();
   return text;
 }

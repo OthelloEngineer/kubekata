@@ -2,6 +2,7 @@
     import { browser } from "$app/environment";
     import DeploymentBox from "$lib/components/DeploymentBox.svelte";
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
+    import { setLevel } from "$lib/utils";
     import cluster from "cluster";
     $: clusterState = getDefaultCluster();
     let polling: NodeJS.Timeout;
@@ -35,7 +36,7 @@
                     FORCE_RERENDER++;
                     console.log("info state: ", clusterState);
                 });
-        }
+            }
     };
     $: setupPoller();
 </script>

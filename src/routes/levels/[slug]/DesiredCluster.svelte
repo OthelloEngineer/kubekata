@@ -3,6 +3,7 @@
     import DeploymentBox from "$lib/components/DeploymentBox.svelte";
     import ServiceBox from "$lib/components/ServiceBox.svelte";
     import { getDefaultCluster, type Cluster } from "$lib/KubernetesTypes";
+    import { setLevel } from "$lib/utils";
     import levelExample from "../levels-example.json";
     $: desiredState = getDefaultCluster();
     let polling: NodeJS.Timeout;
@@ -12,6 +13,7 @@
     export let needsQuestion: boolean = false;
     export let isCompleted: boolean = false;
     let isLoading = true;
+    export let levelName: string;
     const setupPoller = () => {
         if (polling) {
             clearInterval(polling);
@@ -64,6 +66,8 @@
                 });
         }
     };
+
+    setLevel(levelName);
     doFetch();
     $: setupPoller();
 </script>

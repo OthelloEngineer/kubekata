@@ -92,5 +92,5 @@
 </div>
 
 <ClusterInfo />
-<DesiredCluster bind:isCompleted={isComplete} needsQuestion={level?.isQuestion} />
+<DesiredCluster bind:isCompleted={isComplete} needsQuestion={level?.isQuestion} levelName={level?.title} />
 <IntraClusterShell />
