@@ -23,9 +23,9 @@
         "isQuestion": true
       },
       {
-        "title": "What is kubectl",
+        "title": "what is kubectl",
         "picture": "random-image.png",
-        "description": "Kubernetes uses the kubectl command-line tool to interact with the Kubernetes API server. Kubectl allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. Kubectl is a powerful tool that can help you manage your Kubernetes cluster. It works by making HTTP requests to the Kubernetes REST API server.",
+        "description": "Kubernetes uses the kubectl command-line tool to interact with the Kubernetes API server. Kubectl allows you to run commands against Kubernetes clusters for deploying applications, view logs, inspecting, and in general managing cluster resources. Since kubectl is this widely used and the defacto standard of debugging and manually managing cluisters, it will be used extensively in this on-boarding.",
         "goal": "Try running the command code|kubectl#get#nodes in your terminal to see the nodes in your cluster. You should see a node named \"minikube\". But what is a node? A node is a worker machine in Kubernetes. You can have many, but currently you only have one.<br><br>After you've tried using the kubectl command, you can click on \"Solve\" to complete the level.",
         "hint": "This is a hint! :D There is not much to hint for this level B)",
         "isCompleted": false,
@@ -41,7 +41,7 @@
         "title": "simple deployment",
         "picture": "deployment.png", 
         "description": "KubeKata inc. is deploying its first application to Kubernetes. The application is a simple web server that displays a welcome message. They need your help to create a Deployment to manage the application's Pods.",
-        "goal": "The goal is to deploy the manifest found in the othelloengineer/hello-go:1.0.0",
+        "goal": "The goal is to deploy the manifest found in the othelloengineer/hello-go:1.0",
         "hint": "|code|kubectl apply -f kubernetes/deployment-simple.yaml|code|",
         "isCompleted": false,
         "isApproved": true,
@@ -98,7 +98,7 @@
         "goal": "The goal is to update the Deployment to set the environment variable MESSAGE to 'KubeKata FTW' and the label 'hello: go'.",
         "hint": "reconfigure the kubernetes manifest to include the environment variable MESSAGE with the value 'KubeKata FTW' and the label 'hello: go'.",
         "isCompleted": false,
-        "isApproved": true,
+        "isApproved": false,
         "isQuestion": true
       },
       {
@@ -108,8 +108,8 @@
         "goal": "The goal is to create a PersistentVolume and PersistentVolumeClaim to store the data. The PersistentVolume should have a capacity of 1Gi and should be of type hostPath. The PersistentVolumeClaim should request 1Gi of storage and should be bound to the PersistentVolume.",
         "hint": "|code|kubectl apply -f kubernetes/persistent-storage.yaml|code| and ensure that the PersistentVolume and PersistentVolumeClaim are created and bound successfully.",
         "isCompleted": false,
-        "isApproved": true,
-        "isQuestion": true
+        "isApproved": false,
+        "isQuestion": false
       },
       {
         "title": "Share configuration",
@@ -118,7 +118,7 @@
         "goal": "The goal is to create a ConfigMap to store the message. The ConfigMap should have a key MESSAGE and a value 'KubeKata FTW'.",
         "hint": "config maps has a 'data' field that can be used to store key-value pairs. Create a ConfigMap with the key MESSAGE and the value 'KubeKata FTW'.",
         "isCompleted": false,
-        "isApproved": true,
+        "isApproved": false,
         "isQuestion": false
       },
       {
@@ -128,7 +128,7 @@
         "goal": "The goal is to create a Secret to store the message. The Secret should have a key MESSAGE and a value 'KubeKata FTW'.",
         "hint": "secrets are similar to config maps but are base64 encoded. Create a Secret with the key MESSAGE and the value 'KubeKata FTW'.",
         "isCompleted": false,
-        "isApproved": true,
+        "isApproved": false,
         "isQuestion": false
       }
     ]

@@ -1,7 +1,11 @@
 <script lang="ts">
     export let name: string;
     export let isCompleted: boolean;
+    export let isApproved: boolean;
     function getButtonColor() {
+        if (!isApproved) {
+            return "bg-grey-500";
+        }
         return isCompleted ? "bg-green-500" : "bg-blue-500";
     }
     console.log("level name: ", name, "isCompleted: ", isCompleted);
