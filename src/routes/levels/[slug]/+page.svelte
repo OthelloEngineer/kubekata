@@ -63,7 +63,6 @@
             class="mb-2 text-2xl font-semibold tracking-tight text-white dark:text-white"
         >
             {name}
-            
         </h5>
         {#if isComplete}
             <h5 class="mb-2 text-2xl font-semibold tracking-tight text-green-500 dark:text-green-500">

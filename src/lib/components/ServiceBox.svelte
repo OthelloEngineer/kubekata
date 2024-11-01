@@ -42,7 +42,6 @@
                 {/each}
             {/if}
         </div>
-           
     </div>
 
     <div class="mb-4">
@@ -50,7 +49,11 @@
         <div class="flex flex-wrap gap-2">
             {#each service.ports as port}
                 <span class="bg-blue-100 text-blue-600 text-sm font-medium px-3 py-1 rounded-full">
-                    {port}
+                    {#if port.port == undefined}
+                        {port}
+                    {:else}
+                        {port.port}
+                    {/if}
                 </span>
             {/each}
         </div>
@@ -71,5 +74,5 @@
                 </span>
             {/if}
         </div>
-</div>
+    </div>
 </div>

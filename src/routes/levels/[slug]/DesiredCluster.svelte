@@ -92,14 +92,14 @@
         {:else}
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {#if Array.isArray(desiredState.deployments) && desiredState.deployments.length > 0}
-                {#each desiredState.deployments as deployment}
-                    <DeploymentBox {deployment} />
-                {/each}
+                    {#each desiredState.deployments as deployment}
+                        <DeploymentBox {deployment} />
+                    {/each}
                 {/if}
                 {#if Array.isArray(desiredState.services) && desiredState.services.length > 0}
-                {#each desiredState.services as service}
-                    <ServiceBox {service} />
-                {/each}
+                    {#each desiredState.services as service}
+                        <ServiceBox {service} />
+                    {/each}
                 {/if}
             </div>
         {/if}
