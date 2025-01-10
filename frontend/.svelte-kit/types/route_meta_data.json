@@ -1,0 +1,11 @@
+{
+	"/": [],
+	"/api": [
+		"src/routes/api/+server.ts"
+	],
+	"/api/cluster": [
+		"src/routes/api/cluster/+server.ts"
+	],
+	"/levels": [],
+	"/levels/[slug]": []
+}

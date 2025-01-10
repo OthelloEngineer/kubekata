@@ -1,0 +1,1 @@
+export { default as component } from "../../../../src/routes/levels/what-is-a-pod/+page.svelte";

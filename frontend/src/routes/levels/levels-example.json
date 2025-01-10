@@ -1,0 +1,187 @@
+[
+  {
+    "name": "KubeKata introduction",
+    "levels": [
+      {
+        "title": "What is KubeKata", 
+        "picture": "what-is-kubekata.png",
+        "description":  "KubeKata aims to be a motivating, gamified learning platform for Kubernetes. The platform is designed to help users learn Kubernetes concepts and best practices through interactive, hands-on challenges and scenarios. The onboarding process is partitioned into 4 sections. The first section is an introduction to kubectl and KubeKata and its components, followed by sections where you will help KubeKata inc. (a very serious business who needs your help!) deploy, configure, debug, and monitor their applications on Kubernetes.",
+        "goal": "For this section, the goal is to understand what KubeKata is and how it can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",	
+        "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
+      },
+      {
+        "title": "Components of KubeKata",
+        "picture": "kubekata-components.png",
+        "description": "KubeKata is composed of seven main components: A description of the level, the goal of the level, a hint to help you complete the level, a picture illustrating the mechanisms and concepts of the level, a live cluster state of the kubernetes cluster, a desired kubernetes cluster state with an optional question that shows how the cluster should look like after the level is completed, and lastly an intracluster terminal which allows you to perform network operations as if you were an application inside the cluster. (Spoiler alert: Kubernetes has its own private network and DNS!)",
+        "goal": "The goal is to understand the components of KubeKata and how they can help you learn Kubernetes. If you want to skip or automatically complete this level, you can press the solve button in the header.",
+        "hint": "You have just pressed the hint button. Here is a hint that will help you complete the level.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      },
+      {
+        "title": "what is kubectl",
+        "picture": "random-image.png",
+        "description": "Kubernetes uses the kubectl command-line tool to interact with the Kubernetes API server. Kubectl allows you to run commands against Kubernetes clusters for deploying applications, view logs, inspecting, and in general managing cluster resources. Since kubectl is this widely used and the defacto standard of debugging and manually managing cluisters, it will be used extensively in this on-boarding.",
+        "goal": "Try running the command code|kubectl#get#nodes in your terminal to see the nodes in your cluster. You should see a node named \"minikube\". But what is a node? A node is a worker machine in Kubernetes. You can have many, but currently you only have one.<br><br>After you've tried using the kubectl command, you can click on \"Solve\" to complete the level.",
+        "hint": "This is a hint! :D There is not much to hint for this level B)",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
+      }
+    ]
+  },
+  {
+    "name": "Deploying the App",
+    "levels": [
+      {
+        "title": "simple deployment",
+        "picture": "deployment.png", 
+        "description": "KubeKata inc. is deploying its first application to Kubernetes. The application is a simple web server that displays a welcome message. They need your help to create a Deployment to manage the application's Pods.",
+        "goal": "The goal is to deploy the manifest found in the othelloengineer/hello-go:1.0",
+        "hint": "|code|kubectl apply -f kubernetes/deployment-simple.yaml|code|",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": false
+      },
+      {
+        "title": "Curling The App",
+        "picture": "curl.png",
+        "description": "The app is now deployed and running. KubeKata inc. wants to test the app by sending an HTTP request to the Pod. They need your help to curl the app.",
+        "goal": "Use the intracluster terminal to curl the app. Write the response in the question box.to complete the level.",
+        "hint": "Find the IP address of the pod using |code|kubectl get pods -o wide|code| in your own terminal and curl the app using |code|curl <pod-ip>:8080|code| using your intracluster terminal.",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      },
+      {
+        "title": "DNS and Services",
+        "picture": "dns-services.png",
+        "description": "KubeKata inc. has experienced maintenance issues when Pods are destroyed and recreated! It has become a major issue that when a pod crashes and a new one spins up, the newer pod has a different IP. This means that KubeKata inc. Needs to change the IP configured in their other applications all the time. They need your help to create a Service to provide a stable endpoint for the application.",
+        "goal": "The goal is to create a Service to expose the Deployment. The Serviceshould target the Pods created by the Deployment and create Endpoints for them on port 8080",
+        "hint": "kubectl apply -f exercises/hello-go-service.yaml",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      },
+      {
+        "title": "scaling the app",
+        "picture": "scaling-app.png",
+        "description": "Hurrah! Thanks to our genius new operations engineer, the app is now running smoothly and their customerbase has grown 3 times! Unfortunately, the app is not able to handle the increased load and when it crashes there is downtime, which causes a lot of customers to be sad :( . Although sadness is great for the dairy and chocolate busiess, it is detrimental to KubeKata inc. So, they need your help to scale the application to have 3 pods instead of only 1",
+        "goal": "The goal is to scale the Deployment to 3 replicas.",
+        "hint": "|code|kubectl scale deployment hello-go --replicas=3|code|",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      },
+      {
+        "title": "Exposing to the world",
+        "picture": "exposing-world.png",
+        "description": "The employees at KubeKata inc. have grown tired of serving every single costumer themselves by manually creating their requests and sending them to the app from inside the cluster. They need your help to expose the app to the world! They have heard that there is a mysterious thing called a Service of type NodePort that can help them with this.",
+        "goal": "The goal is to create a Service of type NodePort to expose the Deployment on the nodes themselves! Bonus point if you are able to ensure that the NodePort of the service is exposed on port 30080 The difference between Node port and ClusterIP is unfortunately not distinct when using minikube or talos",
+        "hint": "Ensure that the clusterIP service is destroyed using |code|kubectl delete service hello-go|code| before running the command |code|kubectl expose hello-go --port=8080 --type=NodePort|code|",
+        "isCompleted": false,
+        "isApproved": true,
+        "isQuestion": true
+      }
+    ]},
+  {
+    "name": "Maintaining the App",
+    "levels": [
+      {
+        "title": "configuring the app",
+        "picture": "configuring-app.png",
+        "description": "KubeKata inc. wants to configure the app to display a custom welcome message writing 'KubeKata FTW'. They need your help to update the Deployment with a new environment variable. One of their developers have created a kubernetes controller that will require the app to have the label 'hello: go'",
+        "goal": "The goal is to update the Deployment to set the environment variable MESSAGE to 'KubeKata FTW' and the label 'hello: go'.",
+        "hint": "reconfigure the kubernetes manifest to include the environment variable MESSAGE with the value 'KubeKata FTW' and the label 'hello: go'.",
+        "isCompleted": false,
+        "isApproved": false,
+        "isQuestion": true
+      },
+      {
+        "title": "Persistent storage",
+        "picture": "persistent-storage.png",
+        "description": "KubeKata inc. wants to keep track of how many times the app has been accessed in their kubekata:1.1.0 release. However, they have experienced data loss when Pods are destroyed and recreated. They need your help to create a PersistentVolume and PersistentVolumeClaim to store the data.",
+        "goal": "The goal is to create a PersistentVolume and PersistentVolumeClaim to store the data. The PersistentVolume should have a capacity of 1Gi and should be of type hostPath. The PersistentVolumeClaim should request 1Gi of storage and should be bound to the PersistentVolume.",
+        "hint": "|code|kubectl apply -f kubernetes/persistent-storage.yaml|code| and ensure that the PersistentVolume and PersistentVolumeClaim are created and bound successfully.",
+        "isCompleted": false,
+        "isApproved": false,
+        "isQuestion": false
+      },
+      {
+        "title": "Share configuration",
+        "picture": "share-configuration.png",
+        "description": "KubeKata inc. wants to share the message of the app with other teams in the company. This will however require them to store the message in a ConfigMap. They need your help to create a ConfigMap to store the message.",
+        "goal": "The goal is to create a ConfigMap to store the message. The ConfigMap should have a key MESSAGE and a value 'KubeKata FTW'.",
+        "hint": "config maps has a 'data' field that can be used to store key-value pairs. Create a ConfigMap with the key MESSAGE and the value 'KubeKata FTW'.",
+        "isCompleted": false,
+        "isApproved": false,
+        "isQuestion": false
+      },
+      {
+        "title": "keeping a secret",
+        "picture": "keeping-secret.png",
+        "description": "KubeKata inc. wants to keep the message of the app a secret. They need your help to create a Secret to store the message.",
+        "goal": "The goal is to create a Secret to store the message. The Secret should have a key MESSAGE and a value 'KubeKata FTW'.",
+        "hint": "secrets are similar to config maps but are base64 encoded. Create a Secret with the key MESSAGE and the value 'KubeKata FTW'.",
+        "isCompleted": false,
+        "isApproved": false,
+        "isQuestion": false
+      }
+    ]
+  },
+  {
+    "name": "Deploy explanation",
+    "levels" : [
+      {
+        "title": "Deployment manifest"
+      },
+      {
+        "title": "How kubernetes scales"
+      },
+      {
+        "title": "App configuration"
+      },
+      {
+        "title": "How kubernetes persists"
+      }
+    ]
+  },
+  {
+    "name": "Networking, explanation",
+    "levels" : [
+      {
+        "title": "Internal networking"
+      },
+      {
+        "title": "Services"
+      },
+      {
+        "title": "Service types"
+      }
+    ]    
+  },
+  {
+    "name": "Debugging simple app",
+    "levels": [
+      {
+        "title": "app not spinning up"
+      },
+      {
+        "title": "No persistence"
+      },
+      {
+        "title": "No env"
+      },
+      {
+        "title": "App connectivity"
+      },
+      {
+        "title": "Lost file"
+      }
+  ]
+  }
+]
