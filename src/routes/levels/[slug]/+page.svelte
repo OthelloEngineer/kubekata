@@ -9,16 +9,21 @@
     import levelExample from "../levels-example.json";
     import IntraClusterShell from "./IntraClusterShell.svelte";
     import CutePicture from "./CutePicture.svelte";
-    import { setLevel } from "$lib/utils";
+    import { setLevel, slugify } from "$lib/utils";
     let name = $page.params.slug;
     name = name.replace(/-/g, " ");
     let levels = levelExample.flatMap((level) => level.levels);
     console.log("levels: ", levels);
     let level = levels.find((level) => level.title === name);
     console.log("searching for level: ", name);
+    let nextLevel = "";
     for (let i = 0; i < levels.length; i++) {
         if (levels[i].title.toLowerCase() === name) {
             level = levels[i];
+            if (i + 1 < levels.length) {
+                nextLevel = levels[i + 1].title;
+                console.log("next level: ", nextLevel);
+            }
         }
     }
     setLevel(name);
@@ -56,6 +61,7 @@
         >
         <button
             class="bg-red-800 hover:bg-red-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            on:click={() => alert('Not yet impl!')}
             >Reset</button
         >
 
@@ -70,10 +76,20 @@
             </h5>
         {/if}
     </div>
+    <div class="flex flex-row-reverse h-10 gap-4">
         <button
             class="bg-green-800 hover:bg-green-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            on:click={() => alert('Not yet impl!')}
             >Solve</button
         >
+        <a
+            class="bg-yellow-800 hover:bg-yellow-400 rounded-md hover:rounded-xl p-2 outline outline-1 outline-white hover:outline-opacity transition-all duration-300 ease-in-out text-white font-bold"
+            href={nextLevel=== "" ? "/levels" : `/levels/${slugify(nextLevel)}`}
+            rel="external"
+        >
+            Next Level
+    </a>
+    </div>
 </nav>
 <div class="flex">
     <div class="mx-6">

@@ -147,3 +147,8 @@ export function getClusterJson(){
   }
   return clusterJson;
 }
+
+export function slugify(name: string) {
+  console.log("Slugifying", name);
+  return name.toLowerCase().replace(/\s/g, "-");
+}

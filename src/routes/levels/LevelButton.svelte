@@ -1,10 +1,12 @@
 <script lang="ts">
+    import { slugify } from "$lib/utils";
+
     export let name: string;
     export let isCompleted: boolean;
     export let isApproved: boolean;
     function getButtonColor() {
         if (!isApproved) {
-            return "bg-grey-500";
+            return "bg-grey-500 pointer-events-none";
         }
         return isCompleted ? "bg-green-500" : "bg-blue-500";
     }
@@ -14,9 +16,6 @@
     export let goal = "default goal";
     export let description = "default description";
 
-    function slugify(name: string) {
-        return name.toLowerCase().replace(/\s/g, "-");
-    }
     
 </script>
 
