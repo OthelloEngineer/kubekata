@@ -3,8 +3,9 @@
 # Kubekata
 *Kubekata is in very early development and therefore should not be used by end-users for kubernetes on-boarding yet, although feedback is gratefully accepted. Given the lack of a major release, all changes should be considered as breaking.*
 
-
-![KubeCuddle](https://raw.githubusercontent.com/OthelloEngineer/kubekata/refs/heads/main/frontend/src/lib/icons/kubecuddle.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/OthelloEngineer/kubekata/refs/heads/main/frontend/src/lib/icons/kubecuddle.png" alt="KubeCuddle"/>
+</p>
 
 A level-based kubernetes on-boarding guide that provides a mixed top-down and bottom-up approach to learning how to use, debug, and extend kubernetes. This platform is scoped to only include favourable learning objectives for application developers who are responsible for deploying apps for distributed architectures. In short, the goal of kubekata is equipping developers the knowledge and experience necessary for developing distributed application in kubernetes; all the way from deploying an nginx-server to creating their own kubernetes operator that maintains a distributed state of an app. A better description of the learning objectives is described at the [Learning Objectives section](#learning-Objectives).
 
