@@ -54,7 +54,7 @@
     >
         <h1 class="text-white text-2xl font-semibold">Current Cluster State</h1>
         <br>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="flex flex-row gap-4 overflow-x-auto">
         <!-- <p class="text-white">This is the current cluster box</p> -->
         {#if Array.isArray(clusterState.deployments) && clusterState.deployments.length > 0}
             {#key FORCE_RERENDER}

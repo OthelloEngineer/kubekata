@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	label = "kube=kata"
+	label = "kube notin (kata)"
 )
 
 type Client struct {
@@ -101,7 +101,7 @@ func GetAllResources(client Client) Cluster {
 		PersistentVolumeClaim: []PersistentVolumeClaim{},
 	}
 
-	pods, err := client.Client.CoreV1().Pods(client.Namespace).List(context.Background(), *new(metav1.ListOptions))
+	pods, err := client.Client.CoreV1().Pods(client.Namespace).List(context.Background(), listOptions)
 	fmt.Println("No. pods found: ", len(pods.Items))
 	if err != nil {
 		fmt.Println("Error getting pods: ", err)
@@ -195,6 +195,9 @@ func GetAllResources(client Client) Cluster {
 
 	for _, endpointSlice := range endpointSlices.Items {
 		for _, endpoint := range endpointSlice.Endpoints {
+			if endpoint.TargetRef == nil {
+				continue
+			}
 			podName := strings.ToLower(endpoint.TargetRef.Name)
 			TrimmedPodName := strings.Replace(podName, "pod/", "", 1)
 			fmt.Println("Endpoint slice: ", endpointSlice.Name, "Pod name: ", TrimmedPodName)

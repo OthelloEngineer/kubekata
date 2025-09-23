@@ -4,6 +4,8 @@ metadata:
   name: cluster-observer
   annotations:
     container.apparmor.security.beta.kubernetes.io/cluster-observer: unconfined
+  labels:
+    kube: kata
 spec:
   selector:
     matchLabels:
@@ -12,13 +14,14 @@ spec:
     metadata:
       labels:
         app: cluster-observer
+        kube: kata
     spec:
       volumes:
       - name: cluster-observer
         emptyDir: {}
       containers:
       - name: cluster-observer
-        image: othelloengineer/kubekata-cluster-observer:0.2.2
+        image: othelloengineer/kubekata-cluster-observer:0.2.4
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
@@ -38,6 +41,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: curlpod
+  labels:
+    kube: kata
 spec:
   selector:
     matchLabels:
@@ -46,6 +51,7 @@ spec:
     metadata:
       labels:
         app: curlpod
+        kube: kata
     spec:
       containers:
       - name: curlpod
@@ -58,6 +64,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  labels:
+    kube: kata
 spec:
   selector:
     matchLabels:
@@ -66,6 +74,7 @@ spec:
     metadata:
       labels:
         app: frontend
+        kube: kata
     spec:
       containers:
       - name: frontend
@@ -120,11 +129,10 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: frontend
   ports:
-  - nodePort: 31427
-    port: 5173
+  - port: 5173
     protocol: TCP
     targetPort: 5173
